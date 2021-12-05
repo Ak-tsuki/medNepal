@@ -1,0 +1,31 @@
+/* --------------------- Login ----------------------- */
+
+.login-container {
+  max-width: 950px;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.login-usertype {
+  display: flex;
+  justify-content: space-between;
+  
+
+}
+
+.login-header {
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.square-white-btn {
+  border-radius: 13px;
+  font-size: 24px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px 30px;
+}
+
+.login-icon {
+  margin-right: 20px;
+}

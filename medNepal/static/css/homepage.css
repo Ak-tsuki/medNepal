@@ -1,0 +1,49 @@
+/* --------- HERO SECTION ------------ */
+
+.hero-section {
+  padding: 0 50px;
+  margin-bottom: 60px;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto;
+}
+
+.hero-desc {
+  max-width: 40%;
+}
+
+.hero-desc > *:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.hero-btn{
+  display: inline-block;
+}
+
+.hero-image {
+  max-width: 50%;
+}
+
+.hero-pic {
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.font-heading-lg {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.font-secondary {
+  font-size: 20px;
+}
+
+.font-primary{
+  font-size: 36px;
+}

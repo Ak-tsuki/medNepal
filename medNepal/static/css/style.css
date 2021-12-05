@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Mulish:wght@300;400;500;600;700;800;900&display=swap");
+
+/* VARIABLES */
+:root {
+  --color-primary: #458ff6;
+  --color-primary-light: #6cbcfc;
+  --color-orange: #f16601;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: #1f1534;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Mulish", sans-serif;
+}
+
+
+.white-btn {
+  background: #ffffff;
+  border: 1px solid var(--color-primary);
+  padding: 14px 30px;
+  border-radius: 50px;
+  color: var(--color-primary);
+  font-weight: 700;
+
+  transition: all 0.3s;
+}
+
+.white-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.blue-btn {
+  padding: 20px 20px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius:55px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.blue-btn:hover {
+  background-color: #1a5ebd;
+  color: white;
+}
+
+
+

@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} 
+{% load static %} 
+{% block title %}
+<title>Homepage</title>
+{% endblock title %} 
+{% block main_content %}
+<div class="login-container">
+    <h2 class="login-header font-primary">
+        Sign In
+    </h2>
+    <div class="login-usertype font-secondary">
+        <a href="" class="white-btn square-white-btn"><i class="fas login-icon fa-user-cog"></i> Admin</a>
+        <a href="" class="white-btn square-white-btn"> <i class="fas login-icon fa-user"></i> User</a>
+        <a href="" class="white-btn square-white-btn"><i class="fas login-icon fa-user-md"></i>Doctor</a>
+    </div>
+</div>
+{% endblock main_content %}

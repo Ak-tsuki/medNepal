@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trial</title>
-</head>
-<body>
-    <h1>THis is new page.</h1>
-</body>
-</html>
+{% extends 'layout.html' %} 
+{% load static %} 
+{% block title %}
+<title>Homepage</title>
+{% endblock title %} {% block main_content %}
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-desc">
+      <h1 class="font-heading-lg">Virtual healthcare for you</h1>
+      <p class="font-secondary">
+        medNepal provides progressive, and affordable healthcare, accessible on
+        online for everyone
+      </p>
+      <a href="" class="blue-btn hero-btn">Consult now</a>
+    </div>
+    <div class="hero-image">
+      <img
+        src="{% static 'images/image1-heroo.png' %}"
+        alt=""
+        class="hero-pic"
+      />
+    </div>
+  </div>
+</section>
+{% endblock main_content %}
