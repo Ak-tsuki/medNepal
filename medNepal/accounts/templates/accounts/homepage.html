@@ -5,6 +5,13 @@
 {% endblock title %} {% block main_content %}
 <section class="hero-section">
   <div class="hero-container">
+    <div class="hero-image">
+      <img
+        src="{% static 'images/image1-heroo.png' %}"
+        alt=""
+        class="hero-pic"
+      />
+    </div>
     <div class="hero-desc">
       <h1 class="font-heading-lg">Virtual healthcare for you</h1>
       <p class="font-secondary">
@@ -13,13 +20,6 @@
       </p>
       <a href="" class="blue-btn hero-btn">Consult now</a>
     </div>
-    <div class="hero-image">
-      <img
-        src="{% static 'images/image1-heroo.png' %}"
-        alt=""
-        class="hero-pic"
-      />
-    </div>
-  </div>
+   
 </section>
 {% endblock main_content %}

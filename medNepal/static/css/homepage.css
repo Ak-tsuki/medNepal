@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -21,7 +21,7 @@
   margin-bottom: 24px;
 }
 
-.hero-btn{
+.hero-btn {
   display: inline-block;
 }
 
@@ -44,6 +44,6 @@
   font-size: 20px;
 }
 
-.font-primary{
+.font-primary {
   font-size: 36px;
 }
