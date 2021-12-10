@@ -48,3 +48,149 @@
 .font-primary {
   font-size: 36px;
 }
+
+.font-tertiary {
+  font-size: 18px;
+}
+
+.font-default {
+  font-size: 16px;
+}
+
+/* --------- SERVICE SECTION ------------ */
+
+.service-section {
+  padding: 10px;
+  margin-bottom: 60px;
+}
+
+.section-desc {
+  max-width: 952px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-head {
+  font-weight: bold;
+}
+
+.section-line {
+  width: 56px;
+  height: 2px;
+  background: #000000;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.service-showcase {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.service-box {
+  padding: 3% 4%;
+  max-width: 350px;
+  box-shadow: 2px 4px 40px 0px #130feb1a;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.service-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* --------- ABOUT SECTION ------------ */
+
+.about-section {
+  text-align: center;
+  background: linear-gradient(
+    141.86deg,
+    rgba(254, 255, 255, 0.14) 22.64%,
+    rgba(43, 156, 238, 0.14) 98.37%
+  );
+  mix-blend-mode: normal;
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  padding: 100px 40px;
+  margin-bottom: 90px;
+}
+
+.about-image {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+.about-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --------- ARTICLE SECTION ------------ */
+
+.article-section {
+  padding: 100px 40px;
+  margin-bottom: 60px;
+}
+
+.article-showcase {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1120px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.article-box {
+  max-width: 350px;
+  box-shadow: 10px 40px 50px rgba(229, 233, 246, 0.4);
+  border-radius: 20px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.article-image {
+  object-fit: cover;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.article-desc {
+  padding: 5%;
+}
+
+.article-img {
+  width: 100%;
+}
+
+.article-heading {
+  font-weight: 700;
+}
+
+.article-text {
+  margin: 20px 0;
+}
+
+.read-more-btn {
+  font-weight: 700;
+  font-size: 17px;
+  color: rgb(64, 137, 237);
+  transition: all 0.3s;
+}
+
+.read-more-btn:hover {
+  color: #1c1c1d;
+}
+
+
