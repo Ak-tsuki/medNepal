@@ -28,7 +28,6 @@ li {
 
 body {
   font-family: "Mulish", sans-serif;
- 
 }
 
 
@@ -49,7 +48,7 @@ body {
 }
 
 .blue-btn {
-  padding: 20px 20px;
+  padding: 20px 30px;
   background-color: var(--color-primary);
   color: #fff;
   border-radius:55px;
