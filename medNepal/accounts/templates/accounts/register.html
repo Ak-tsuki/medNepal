@@ -5,19 +5,51 @@
 <title>Register</title>
 {% endblock title %} 
 {% block main_content %}
-
+<style>
+    .helptext{
+        display: none;
+    }
+    .myForm>label{
+        font-size: larger;
+        color: black;
+        width: 100%;
+        text-align: left;
+        margin-top: 20px;
+    }
+    br{
+        display: none;
+    }
+</style>
 
 <div class="container my-3">
+
     <div class="row wow slideInRight">
         <div class="col-md-6 offset-md-3">
-
-            <div class="card p-3 bg-dark text-light opacity-75">
-                <h1 class="text-center">Register New User</h1>
+            <div class="p-3">
+                <h1 class="text-center login-header text-primary">Register An Account</h1>
+                <div class="login-usertype font-secondary">
+                    <a href="" class="white-btn square-white-btn"> <i class="fas login-icon fa-user"></i> User</a>
+                    <a href="" class="white-btn square-white-btn"><i class="fas login-icon fa-user-md"></i>Doctor</a>
+                </div>
                 {% include 'messages.html' %}
-                <form class="form myForm" action="" method="POST">
+                <form class="form myForm" action="" method="POST" style="margin: 15% 0%;">
                     {% csrf_token %}
                     {{ form_register }}
-                    <button type="submit" class="btn btn-primary">Register</button>
+
+                    <div class="my-4 mx-2">
+                        <input type="checkbox" name="remenderMe" id="rem" class="d-inline">
+                        <label for="rem" class="d-inline ms-2">Keep me informed about the latest updates and offers through email.</label>
+                    </div>
+
+                    <div class="d-grid gap-2 my-5">
+                        <button class="btn btn-primary py-3 fs-3 fw-bold rounded-pill" type="submit">Register</button>
+                    </div>
+
+                    <div class="d-flex justify-content-evenly">
+                        <label class="my-auto">Already Registered into medNepal?</label>
+                        <a href="/login" class="btn white-btn">Sign In</a>
+                    </div>
+
                 </form>
             </div>
         </div>

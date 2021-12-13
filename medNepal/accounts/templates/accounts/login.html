@@ -2,7 +2,7 @@
 {% load bootstrap %}
 {% load static %} 
 {% block title %}
-<title>Homepage</title>
+<title>Login</title>
 {% endblock title %} 
 {% block main_content %}
 
@@ -16,7 +16,7 @@
 </style>
 
 <div class="login-container">
-    <h2 class="login-header font-primary">
+    <h2 class="login-header font-primary text-primary">
         Sign In
     </h2>
     <div class="login-usertype font-secondary">
@@ -38,12 +38,12 @@
             </div>
             
             <div class="d-grid gap-2 my-5">
-                <button class="btn btn-primary py-3 fs-3 fw-bold" type="submit">Sign In</button>
+                <button class="btn btn-primary py-3 fs-3 fw-bold rounded-pill" type="submit">Sign In</button>
             </div>
 
             <div class="d-flex justify-content-evenly">
-                <label class="my-auto">Not registeres User?</label>
-                <a href="#" class="btn white-btn">Sign Up</a>
+                <label class="my-auto">Not registered User?</label>
+                <a href="/register" class="btn white-btn">Sign Up</a>
             </div>
         </form>
     </div>
