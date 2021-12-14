@@ -1,0 +1,49 @@
+
+.cat-title{
+  background: #476298;
+  border-radius: 13px;
+}
+
+.med-cat-title{
+font-weight: 800;
+font-size: 24px;
+line-height: 38px;
+color: #FFFFFF;
+}
+
+.medicine-card{
+  /* width: 422px;
+  height: 261px; */
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px -3px 8px 4px #6CBCFC;
+  border-radius: 13px;
+}
+
+.med-icon{
+font-size: 500%;
+}
+
+.med-title{
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 38px;
+  color: #F16601;
+}
+
+.med-price{
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 38px;
+  color: #21B85D;
+}
+.cartbtn{
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  color: #458FF6;
+}
