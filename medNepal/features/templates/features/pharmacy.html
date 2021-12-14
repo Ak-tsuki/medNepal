@@ -9,28 +9,48 @@
 
 
 <section class="pharmacy-main container-fluid p-5">
+  <div class="search-section">
+    <div class="select-dept font-default">
+      Select department <i class="fas fa-caret-down dropdown-dept-icon"></i>
+      <ul class="dept-list">
+        <li class="dept-list-item">Cardiology</li>
+        <li class="dept-list-item">Dental</li>
+        <li class="dept-list-item">Optometrics</li>
+        <li class="dept-list-item">Gynocology</li>
+      </ul>
+    </div>
+    <div class="search-dept">
+      <input type="text" class="search-dept-input font-default" placeholder="Search doctors..."><i class="fas fa-search search-box-icon"></i>
+    </div>
+  </div>
   <div class="cat-title badge text-center mb-5">
     <h1 class="med-cat-title mb-0">Common Medicine</h1>
   </div>
   <div class="d-flex flex-wrap justify-content-between mb-5">
-    <div class="medicine-card card flex-row">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
         <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
       </div>
     </div>
-    <div class="medicine-card card flex-row">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
         <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
       </div>
     </div>
-    <div class="medicine-card card flex-row">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
@@ -38,25 +58,31 @@
       </div>
     </div>
   </div>
-  <div class="d-flex flex-wrap justify-content-between">
-    <div class="medicine-card card flex-row">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+  <div class="d-flex flex-wrap justify-content-between mb-5">
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
         <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
       </div>
     </div>
-    <div class="medicine-card card flex-row ">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
         <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
       </div>
     </div>
-    <div class="medicine-card card flex-row">
-      <a href="#" class="img-fluid text-decoration-none fs-3 p-4"><i class="med-icon fas fa-prescription-bottle-alt "></i></a>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="med-title card-title">Paracetamol</h5>
         <p class="med-price card-text">Rs. 150</p>
@@ -65,6 +91,77 @@
     </div>
   </div>
 </section>
+
+<section class="pharmacy-main container-fluid p-5">
+  <div class="cat-title badge text-center mb-5">
+    <h1 class="med-cat-title mb-0">Common Medicine</h1>
+  </div>
+  <div class="d-flex flex-wrap justify-content-between mb-5">
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-wrap justify-content-between mb-5">
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text">Rs. 150</p>
+        <a href="#" class="cartbtn btn btn-outline-primary rounded-pill">Add To Cart</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 {% endblock main_content %}
