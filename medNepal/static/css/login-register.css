@@ -11,13 +11,12 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
-
 }
 
 .login-header {
   font-weight: 700;
   margin-bottom: 50px;
+  color: var(--color-primary);
 }
 
 .square-white-btn {
@@ -29,4 +28,14 @@
 
 .login-icon {
   margin-right: 20px;
+}
+
+.forget-pwd {
+  color: var(--color-primary);
+}
+
+.rect-btn {
+  border-radius: 5px;
+ 
+
 }
