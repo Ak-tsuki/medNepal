@@ -1,4 +1,7 @@
-
+.pharmacy-main{
+  max-width: 1490px;
+  margin: 0 auto;
+}
 .cat-title{
   background: #476298;
   border-radius: 13px;
