@@ -1,53 +1,81 @@
 from django.shortcuts import render,redirect
-from .forms import LoginForm, CreateUserForm
+from .forms import LoginForm, PatientSignUpForm, DoctorSignUpForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login, logout
+from .models import User,Patient
+
+
+
+from django.views.generic import CreateView
 
 # Create your views here.
 def homepage(request):
     return render(request, 'accounts/homepage.html')
 
 
-def login(request):
+def login_user(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            data = form.cleaned_data
-            user = authenticate(request, username=data['username'], password=data['password'])
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
 
             if user is not None:
                 if not user.is_staff:
-                    #login(request, user)
-                    return redirect('/register')
-                elif user.is_staff:
-                    #login(request, user)
+                    login(request, user)
                     return redirect('/')
+                elif user.is_staff:
+                    login(request, user)
+                    return redirect('/admins')
             else:
                 messages.add_message(request, messages.ERROR, "Invalid user name or password")
                 return render(request, 'accounts/login.html', {'form_login': form})
-
+    
     context = {
         'form_login': LoginForm
     }
-    return render(request, 'accounts/login.html',context)
+    return render(request, 'accounts/login.html', context)
 
-def register_user(request):
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.add_message(request, messages.SUCCESS, "User registered successfully")
-            return redirect('/')
-        else:
-            messages.add_message(request, messages.ERROR, "Something went wrong")
-            return render(request, 'accounts/register.html', {'form_register': form})
+
+
+class PatientSignUpView(CreateView):
+    model = User
+    form_class = PatientSignUpForm
+    template_name = 'accounts/signupPatient.html'
     
-    context = {
-        'form_register': CreateUserForm,
-    }
-    return render(request, 'accounts/register.html', context)
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'patient'
+        return super().get_context_data(**kwargs)
+    
+    def form_valid(self, form):
+        user = form.save()
+        return redirect('/login')
+    
+
+class DoctorSignUpView(CreateView):
+    model = User
+    form_class = DoctorSignUpForm
+    template_name = 'accounts/signupDoctor.html'
+    
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'doctor'
+        return super().get_context_data(**kwargs)
+    
+    def form_valid(self, form):
+        user = form.save()
+        return redirect('/login')
+
 
 
 def logout_user(request):
     logout(request)
-    return redirect('/')
+    return redirect('/login')
+
+
+def get_profile(request):
+    profile = request.user.profile
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'accounts/get_profile.html', context)

@@ -1,0 +1,63 @@
+{% extends 'layout-admin.html' %}
+{% load static %}
+{% block title %}
+<title>Admin-Dashboard</title>
+{% endblock %}
+{% block main_content %}
+<style>
+    .mylink{
+    color:white;
+    text-decoration:none;
+    transition: all 2s;
+    }
+    .mylink:hover{
+    color:brown;
+
+    }
+    .card-body:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    transition-duration:2s;
+    }
+</style>
+
+
+
+<div class="container main my-5 text-uppercase">
+    {% include 'messages.html' %}
+    <div class="d-flex justify-content-center my-5">
+        <div class="wrapper">
+            <div class="admincard wow slideInLeft">
+                <h1>
+                    <span class="enclosed">Admin</span>Dashboard
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="wow slideInRight card text-white bg-success mb-3 shadow rounded-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <a href="/admins/show_user" class="text-center mylink">
+                        <h1 class="card-title"><i class="bi bi-people-fill me-2"></i>{{user}}</h1>
+                        <h3>Total Users</h3>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col my-2">
+            <div class="wow bounceInUp card text-white bg-danger mb-3 shadow rounded-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <a href="/admins/show_admin" class="text-center mylink">
+                        <h1 class="card-title"><i class="bi bi-person-fill me-2"></i>{{admin}}</h1>
+                        <h3>Total Admins</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

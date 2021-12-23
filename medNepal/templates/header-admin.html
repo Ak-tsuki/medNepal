@@ -1,0 +1,370 @@
+<body>
+    <!-- header -->
+
+    <!-- top navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+                aria-controls="offcanvasExample">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="/admins"> Admin Dashboard</a>
+            <a href="/admins/show_contactus" class="me-4 fs-4 text-light"><i class="bi bi-envelope">
+                    <span class="position-absolute top-10 start-85 translate-middle badge rounded-pill bg-danger"
+                        style="font-size:10px;">
+                        {{contact}}
+                        <span class="visually-hidden">unread messages</span>
+                    </span></i></a>
+            <div class="dropdown">
+                <a class="text-decoration-none dropdown-toggle fs-5 text-light" href="#" role="button"
+                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-fill"></i> {{request.user}}
+                </a>
+                <a href="/accounts/logout" class="ms-2 btn btn-sm btn-danger">Logout</a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/accounts/admin_password_change">Change Password</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- top navigation bar -->
+    <!-- offcanvas -->
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
+        <div class="offcanvas-body p-0">
+            <nav class="navbar-dark">
+                <ul class="navbar-nav">
+                    <li>
+                        <a href="/admins" class="nav-link px-3 active">
+                            <span class="me-2"><i class="fas fa-solar-panel"></i></span>
+                            <span>Admin Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="my-4">
+                        <hr class="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                            Movie
+                        </div>
+                    </li>
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
+                            <span class="me-2"><i class="bi bi-camera-reels-fill"></i></span>
+                            <span>Movies</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_movie" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-camera-reels-fill"></i></span>
+                                        <span>Add Movie</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_movie" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-camera-reels-fill"></i></span>
+                                        <span>Show Movie Details</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admins/get_all_movie_review" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-camera-reels-fill"></i></span>
+                                        <span>Show Movie Reviews Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts1">
+                            <span class="me-2"><i class="fas fa-font"></i></span>
+                            <span>Language</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts1">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_language" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-font"></i></span>
+                                        <span>Add Language</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_language" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-font"></i></span>
+                                        <span>Show Language Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts2">
+                            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                            <span>Genre</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts2">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_genre" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Add Genre</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_genre" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Show Genre Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts3">
+                            <span class="me-2"><i class="fas fa-globe-europe"></i></span>
+                            <span>Country</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts3">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_country" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-globe-europe"></i></span>
+                                        <span>Add Country</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_country" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-globe-europe"></i></span>
+                                        <span>Show Country Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts4">
+                            <span class="me-2"><i class="bi bi-camera-reels"></i></span>
+                            <span>Upcoming Movies</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts4">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_upcomingmovie" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-camera-reels"></i></span>
+                                        <span>Add Upcoming Movie</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_upcomingmovie" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-camera-reels"></i></span>
+                                        <span>Show Upcoming Movie Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="my-4">
+                        <hr class="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                            Now Showing Movies
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts5">
+                            <span class="me-2"><i class="bi bi-film"></i></span>
+                            <span>ShowTime</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts5">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_showtime" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-film"></i></span>
+                                        <span>Add ShowTime</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_showtime" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-film"></i></span>
+                                        <span>Show ShowTime Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts6">
+                            <span class="me-2"><i class="fas fa-ticket-alt"></i></span>
+                            <span>Ticket Rates</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts6">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/movie/post_ticketrate" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-ticket-alt"></i></span>
+                                        <span>Add Ticket Rates</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/movie/get_ticketrate" class="nav-link px-3">
+                                        <span class="me-2"><i class="fas fa-ticket-alt"></i></span>
+                                        <span>Show Ticket Rates Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="my-4">
+                        <hr class="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                            Movies Booking
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="/admins/show_booking" class="nav-link px-3">
+                            <span class="me-2"><i class="fas fa-bookmark"></i></span>
+                            <span>Show Booking Details</span>
+                        </a>
+                    </li>
+                    <li>
+
+
+                    <li class="my-4">
+                        <hr class="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                            Home Page
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts7">
+                            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                            <span>About Us</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts7">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/post_aboutus" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Add About Us</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/get_aboutus" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Show About Us Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts8">
+                            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                            <span>Gallery</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="layouts8">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/post_gallery" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Add Gallery</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/get_gallery" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                                        <span>Show Gallery Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="my-4">
+                        <hr class="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                            Users
+                        </div>
+                    </li>
+                    <a href="/admins/register_user" class="nav-link px-3">
+                        <span class="me-2"><i class="fas fa-user-plus"></i></span>
+                        <span>Add User</span>
+                    </a>
+
+
+                    <a href="/admins/show_user" class="nav-link px-3">
+                        <span class="me-2"><i class="bi bi-table"></i></span>
+                        <span>Show Users Detail</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>

@@ -16,7 +16,7 @@
         text-align: left;
         margin-top: 20px;
     }
-    br{
+    .myForm ul{
         display: none;
     }
 </style>
@@ -28,13 +28,13 @@
             <div class="p-3">
                 <h1 class="text-center login-header ">Register An Account</h1>
                 <div class="login-usertype font-secondary">
-                    <a href="" id="user" class="white-btn square-white-btn {{activate_user}}"> <i class="fas login-icon fa-user"></i> User</a>
-                    <a id="doctor" class="white-btn square-white-btn {{activate_doctor}}"><i class="fas login-icon fa-user-md"></i>Doctor</a>
+                    <a href="{%url 'patient_signup'%}" id="user" class="white-btn square-white-btn"> <i class="fas login-icon fa-user"></i> User</a>
+                    <a href="{%url 'doctor_signup'%}" class="square-white-btn btn-primary text-white"><i class="fas login-icon fa-user-md"></i>Doctor</a>
                 </div>
                 {% include 'messages.html' %}
                 <form class="form myForm" action="" method="POST" style="margin: 15% 0%;">
                     {% csrf_token %}
-                    {{ form_register }}
+                    {{ form.as_p }}
 
                     <div class="my-4 mx-2">
                         <input type="checkbox" name="remenderMe" id="rem" class="d-inline">
@@ -61,11 +61,13 @@
 
     
     form_fields[1].placeholder = "Enter User Name"
-    form_fields[2].placeholder = "Enter First Name"
-    form_fields[3].placeholder = "Enter Last Name"
+    form_fields[2].placeholder = "Enter Password"
+    form_fields[3].placeholder = "Confirm Password"
     form_fields[4].placeholder = "Enter Email"
-    form_fields[5].placeholder = "Password"
-    form_fields[6].placeholder = "Confirm Password"
+    form_fields[5].placeholder = "Enter First Name"
+    form_fields[6].placeholder = "Enter Last Name"
+    form_fields[7].placeholder = "Enter Phone Number"
+    form_fields[8].placeholder = "Enter Address"
 
 
     for (field in form_fields) {
