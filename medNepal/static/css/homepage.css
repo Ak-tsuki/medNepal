@@ -184,6 +184,7 @@
   font-weight: 800;
   border-radius: 39px;
   margin-bottom: 20px;
+  width: 220px;
 }
 .doctor-box > *:not(:last-child) {
   margin-bottom: 25px;
@@ -240,6 +241,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
   flex-wrap: wrap;
 }
 
@@ -347,4 +349,156 @@
 
 .read-more-btn:hover {
   color: #1c1c1d;
+}
+
+@media (max-width: 1134px) {
+  .font-heading-lg {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 855px) {
+  .hero-image,
+  .hero-desc {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    margin-bottom: 30px;
+  }
+  .hero-container {
+    flex-direction: column;
+  }
+  .article-box {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 680px) {
+ .article-showcase{
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  
+ }
+ .article-box{
+  max-width: 400px;
+ }
+}
+
+@media (max-width: 500px) {
+  .hero-section,
+  .article-section {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 460px) {
+  .doctor-box {
+    width: 180px;
+    padding: 20px 10px;
+    border-radius: 20px;
+  }
+  .doctor-box > *:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .feature-btn {
+    padding: 14px 9px;
+    font-size: 15px;
+
+    border-radius: 18px;
+  }
+  .feature-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
+  .about-section {
+    padding: 20px;
+  }
+
+  .doctor-showcase {
+    margin-top: 40px;
+  }
+
+  .hero-section {
+    margin-bottom: 20px;
+  }
+
+  .service-box {
+    padding: 15px;
+  }
+  .service-icon {
+    width: 60px;
+    height: 65px;
+  }
+
+  .article-section, .service-section, .features-section{
+    margin-bottom: 30px;
+  }
+  
+
+}
+
+@media (max-width: 380px) {
+  .font-heading-lg {
+    font-size: 28px;
+  }
+  .font-secondary,
+  .service-name {
+    font-size: 18px;
+  }
+  .font-primary {
+    font-size: 22px;
+  }
+  .font-tertiary {
+    font-size: 14px;
+  }
+
+  .font-default {
+    font-size: 14px;
+  }
+
+  .doctor-box {
+    width: 160px;
+  }
+}
+
+@media (max-width: 730px) {
+  .service-box {
+    max-width: 280px;
+  }
+
+}
+
+@media (max-width: 580px) {
+  .service-showcase {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .service-box {
+    max-width: 330px;
+  }
+}
+
+
+@media (max-width:345px){
+  .doctor-showcase{
+    flex-direction: column;
+    
+  }
+  .doctor-box{
+    width: 100%;
+  }
+
+  .feature-options{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .feature-btn{
+    width: 165px;
+  }
 }
