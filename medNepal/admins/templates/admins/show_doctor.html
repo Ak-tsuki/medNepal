@@ -9,7 +9,7 @@
         <div class="col-md-10 offset-md-1">
             <div class="card p-2">
                 {% include 'messages.html' %}
-                <h1 class="text-center">All Users</h1>
+                <h1 class="text-center">All Doctors</h1>
                 <div class="card card-body">
                     <form action="" class="form myForm" method="GET">
                         {{ user_filter.form | bootstrap_horizontal }}
@@ -24,7 +24,6 @@
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,10 +33,7 @@
                             <td>{{user.first_name}}</td>
                             <td>{{user.last_name}}</td>
                             <td>{{user.email}}</td>
-                            <td><a href="/admins/update_usertoadmin/{{user.id}}" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Are you sure want to update this user to admin?')"><i
-                                        class="fas fa-user-edit"></i> Update to
-                                    Admin</a></td>
+                            
                         </tr>
                         {% endfor %}
                     </tbody>
