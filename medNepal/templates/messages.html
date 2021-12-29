@@ -1,0 +1,52 @@
+<style>
+.alert {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+    transition: visibility 0s, opacity 250ms, transform 250ms;
+}
+.alert.hide {
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: visibility 0s 250ms, opacity 250ms, transform 250ms;
+}
+    .alert-success{
+        background-color: #3EB489;
+        color: white;
+    }
+    .alert-danger{
+        background-color:  #DC381F;
+        color: white;
+        /* animation-name: fade-away; */
+        /* animation-duration: 2s; */
+    }
+
+</style>
+{% for msg in messages %}
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+</div>
+{% endif %}
+{% endfor %}
+
+
+<script>
+    var m = document.getElementsByClassName("alert");  // Return an array
+
+    setTimeout(function(){
+       if (m && m.length) {
+           m[0].classList.add('hide');
+       }
+    }, 3000);
+</script>

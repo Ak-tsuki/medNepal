@@ -25,6 +25,7 @@
         <a href="" class="white-btn square-white-btn"><i class="fas login-icon fa-user-md"></i>Doctor</a>
     </div>
     <div style="margin:200px 15%;">
+        {% include 'messages.html' %}
         <form class="form m-3 myForm" action="" method="POST">
             {% csrf_token %}
             {{ form_login }}
