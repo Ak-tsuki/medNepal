@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.deletion import CASCADE
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 department_CHOICES = [
@@ -33,6 +35,17 @@ class Patient(models.Model):
     
     def __str__(self):
         return self.user.username
+
+
+class Department(models.Model):
+    DeptName = models.CharField(max_length=100)
+    deptPic = models.FileField(upload_to='static/profile', default='static/default_user.png')
+    description = RichTextField(blank=True, null=True)
+    appointmentFee = models.IntegerField()
+
+    def __str__(self):
+        return self.DeptName
+
     
 
 class Doctor(models.Model):
@@ -41,8 +54,10 @@ class Doctor(models.Model):
     lastname = models.CharField(max_length=50)
     phone = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    departmentName = models.CharField(choices=department_CHOICES,max_length=100)
+    departmentName = models.ForeignKey(Department,on_delete=CASCADE)
+    hospitalName = models.CharField(max_length=200)
     
     def __str__(self):
         return self.user.username
+
 

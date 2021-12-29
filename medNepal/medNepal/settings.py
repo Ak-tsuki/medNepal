@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'admins.apps.AdminsConfig',
     'bootstrapform',
     'django_filters',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

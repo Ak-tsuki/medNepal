@@ -73,9 +73,4 @@ def logout_user(request):
     return redirect('/login')
 
 
-def get_profile(request):
-    profile = request.user.profile
-    context = {
-        'profile': profile,
-    }
-    return render(request, 'accounts/get_profile.html', context)
+

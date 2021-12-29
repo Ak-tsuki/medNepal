@@ -1,9 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
+from django.forms import ModelForm
 
 from .models import *
 
+
+
+class DepartmentForm(ModelForm):
+    class Meta:
+        model = Department
+        fields = '__all__'
 
 
 class LoginForm(forms.Form):
@@ -41,12 +48,16 @@ class PatientSignUpForm(UserCreationForm):
 
 
 class DoctorSignUpForm(UserCreationForm):
+    
+    department_CHOICES = Department.objects.all()
+    
     email=forms.EmailField(required=True)
     firstname = forms.CharField(required=True)
     lastname = forms.CharField(required=True)
     phone=forms.CharField(required=True)
     address=forms.CharField(required=True)
     departmentName = forms.ChoiceField(choices=department_CHOICES, widget=forms.Select(), required=True)
+    hospitalName = forms.CharField(required=True)
     
     class Meta(UserCreationForm.Meta):
         model = User
@@ -63,5 +74,6 @@ class DoctorSignUpForm(UserCreationForm):
         doctor.phone=self.cleaned_data.get('phone')
         doctor.address=self.cleaned_data.get('address')
         doctor.departmentName=self.cleaned_data.get('departmentName')
+        doctor.hospitalName=self.cleaned_data.get('hospitalName')
         doctor.save()
         return doctor  

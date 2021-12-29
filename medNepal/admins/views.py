@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import get_user_model
 from .filters import *
-from accounts.models import Doctor, Patient
+from accounts.models import Doctor, Patient, Department
+from accounts.forms import DepartmentForm
+from django.contrib import messages
 # Create your views here.
 User = get_user_model()
 
@@ -46,3 +48,63 @@ def get_patient(request):
     }
 
     return render(request, 'admins/show_patient.html', context)
+
+
+
+
+def post_department(request):
+    if request.method == 'POST':
+        form = DepartmentForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Posted successfully")
+            return redirect('/admins/get_department')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to post successfully")
+            return render(request, 'admins/post_department.html', {'form_department': form})
+
+    context = {
+        'form_department': DepartmentForm,
+        'activate_post_department': 'active'
+    }
+    return render(request, 'admins/post_department.html', context)
+
+
+
+def get_department(request):
+    department = Department.objects.all().order_by('-id')
+
+    context = {
+        'files': department,
+    }
+    return render(request, 'admins/get_department.html', context)
+
+
+
+def delete_department(request, department_id):
+    department = Department.objects.get(id=department_id)
+    department.delete()
+    messages.add_message(request, messages.SUCCESS, "Succeccfully deleted")
+    return redirect('/get_department')
+
+
+
+def update_department(request, department_id):
+    department = Department.objects.get(id=department_id)
+
+    if request.method == 'POST':
+        form = DepartmentForm(request.POST, instance=department)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Updated successfully")
+            return redirect('/get_department')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to update successfully")
+            return render(request, 'admins/update_department.html', {'form_department': form})
+
+    context = {
+        'form_department': DepartmentForm(instance=department),
+    }
+    return render(request, 'admins/update_department.html', context)
