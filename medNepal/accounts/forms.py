@@ -25,6 +25,7 @@ class PatientSignUpForm(UserCreationForm):
     phone = forms.CharField(required=True)
     address = forms.CharField(required=True)
     age = forms.CharField(required=True)
+    profilePic=forms.FileField(required=True)
     gender = forms.ChoiceField(choices=gender_CHOICES, widget=forms.Select(), required=True)
     
     class Meta(UserCreationForm.Meta):
@@ -42,20 +43,20 @@ class PatientSignUpForm(UserCreationForm):
         patient.phone=self.cleaned_data.get('phone')
         patient.address=self.cleaned_data.get('address')
         patient.age=self.cleaned_data.get('age')
+        patient.profile_pic=self.cleaned_data.get('profilePic')
         patient.gender=self.cleaned_data.get('gender')
         patient.save()
         return patient     
 
 
 class DoctorSignUpForm(UserCreationForm):
-    
-    department_CHOICES = Department.objects.all()
-    
+   
     email=forms.EmailField(required=True)
     firstname = forms.CharField(required=True)
     lastname = forms.CharField(required=True)
     phone=forms.CharField(required=True)
     address=forms.CharField(required=True)
+    profilePic=forms.FileField(required=True)
     departmentName = forms.ChoiceField(choices=department_CHOICES, widget=forms.Select(), required=True)
     hospitalName = forms.CharField(required=True)
     
@@ -73,7 +74,9 @@ class DoctorSignUpForm(UserCreationForm):
         doctor.lastname=self.cleaned_data.get('lastname')
         doctor.phone=self.cleaned_data.get('phone')
         doctor.address=self.cleaned_data.get('address')
+        doctor.profile_pic=self.cleaned_data.get('profilePic')
         doctor.departmentName=self.cleaned_data.get('departmentName')
         doctor.hospitalName=self.cleaned_data.get('hospitalName')
         doctor.save()
         return doctor  
+    

@@ -32,7 +32,7 @@
                     <a href="{%url 'doctor_signup'%}" class="white-btn square-white-btn"><i class="fas login-icon fa-user-md"></i>Doctor</a>
                 </div>
                 {% include 'messages.html' %}
-                <form class="form myForm" action="" method="POST" style="margin: 15% 0%;">
+                <form class="form myForm" action="" method="POST" style="margin: 15% 0%;" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
 

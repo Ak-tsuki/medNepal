@@ -5,7 +5,7 @@ urlpatterns = [
     # Article Page Path
     path('article', views.article, name='article'),
     # Doctor Page Path
-    path('doctorpage', views.doctorpage),
+    path('doctorpage/<int:d_id>', views.doctorpage),
     # Pharmacy Page Path
     path('pharmacy', views.pharmacy),
     # SearchDoctor Page Path

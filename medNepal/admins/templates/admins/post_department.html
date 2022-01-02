@@ -16,9 +16,8 @@
             <div class="card py-2 px-2 rounded-3 shadow-lg">
                 {% include 'messages.html' %}
                 <h1 class="text-center bg-light fw-bold shadow">Add Department</h1>
-                <form class="form myForm" action="" method="POST">
+                <form class="form myForm" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form_department.media }}
                     {{ form_department | bootstrap_horizontal }}
                     <button type="submit" class="btn btn-primary shadow-lg rounded-3">Submit</button>
                 </form>

@@ -21,26 +21,22 @@
   <div class="container container-border-primary mt-5 mb-5">
     <div class="row justify-content-around">
         <div class="card pt-3 col-md-5">
-            <img src="{% static 'images/unsplash_7bMdiIqz_J4.png' %}" class="card-img-top" alt="...">
+            <img src="/{{doctor.profile_pic}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h1 class="card-title">Dr. David Smith</h1>
-              <h6 class="card-title">Dermatologist</h6>
-              <h5 class="card-title">B & B Hospital, Lalipur </h5>
-              <h5 class="card-title">Appointment Fee:</h5>
+              <h1 class="card-title">Dr. {{doctor.firstname}} {{doctor.lastname}}</h1>
+              <h6 class="card-title">{{doctor.departmentName}}</h6>
+              <h5 class="card-title">{{doctor.hospitalName}}</h5>
+              <h5 class="card-title">{{department.appointmentFee}}</h5>
                 
               <a href="#" class="btn btn-primary">Free Consult</a> 
               <a href="#" class="btn btn-outline-primary" >Get Appoitment</a>   
             </div>
         </div>
         <div class="container pt-3 col-md-5">
-          <img src="{% static 'images/Rectangle 44.png' %}" class="card-img-top" alt="...">
+          <img src="/{{department.deptPic}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h1 class="card-title">Dermatologist</h1>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h1 class="card-title">{{department.DeptName}}</h1>
+            <p class="card-text">{{department.description}}</p>
           </div>
       </div>
 
