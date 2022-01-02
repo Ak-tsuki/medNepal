@@ -1,7 +1,5 @@
-/* --------------------- Login ----------------------- */
-
 .login-container {
-  max-width: 950px;
+  max-width: 650px;
   padding: 10px;
   text-align: center;
   margin: 0 auto;
@@ -36,6 +34,26 @@
 
 .rect-btn {
   border-radius: 5px;
- 
+}
 
+.main {
+  position: relative;
+  overflow: hidden;
+}
+
+.blobs {
+  position: absolute;
+  height: 25%;
+  width: 30%;
+  z-index: -1;
+}
+
+.blob2 {
+  bottom: 500px;
+  right: -150px;
+}
+
+.blob1 {
+  top: 200px;
+  left: -150px;
 }
