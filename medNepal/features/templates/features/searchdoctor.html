@@ -1,144 +1,102 @@
-{% extends 'layout.html' %} 
+{% extends 'layout.html' %}
 {% load bootstrap %}
-{% load static %} 
+{% load static %}
 {% block title %}
 <title>Search Doctor</title>
-{% endblock title %} 
+{% endblock title %}
 {% block main_content %}
 
 
 <section class="doctor-page">
-    <div class="search-section">
-        <div class="select-dept font-default">
-          Select department <i class="fas fa-caret-down dropdown-dept-icon"></i>
-          <ul class="dept-list">
-            <li class="dept-list-item">Cardiology</li>
-            <li class="dept-list-item">Dental</li>
-            <li class="dept-list-item">Optometrics</li>
-            <li class="dept-list-item">Gynocology</li>
-          </ul>
-        </div>
-        <div class="search-dept">
-          <input type="text" class="search-dept-input font-default" placeholder="Search doctors..."><i class="fas fa-search search-box-icon"></i>
-        </div>
-        
-      </div>
+  <div class="search-section">
+    <div class="select-dept font-default">
+      Select department <i class="fas fa-caret-down dropdown-dept-icon"></i>
+      <ul class="dept-list">
+        <li class="dept-list-item">Cardiology</li>
+        <li class="dept-list-item">Dental</li>
+        <li class="dept-list-item">Optometrics</li>
+        <li class="dept-list-item">Gynocology</li>
+      </ul>
+    </div>
+    <div class="search-dept">
+      <input type="text" class="search-dept-input font-default" placeholder="Search doctors..."><i
+        class="fas fa-search search-box-icon"></i>
+    </div>
+
+  </div>
   <div class="doctor-container">
     <h3 class="doctor-showcase-title">Featured Doctors</h3>
     <div class="doctor-showcase doctor-showcase2">
+      {% for doctor in doctors %}
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-1.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="/{{doctor.profile_pic}}" alt="" class="doctor-img" />
         </div>
-        <h3 class="doctor-name font-tertiary">Dr. David Smith</h3>
-        <p class="doctor-dept font-secondary">Dermatologist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <h3 class="doctor-name font-tertiary">Dr. {{doctor.firstname}} {{doctor.lastname}}</h3>
+        <p class="doctor-dept font-secondary">{{doctor.departmentName}}</p>
+        <a href="/features/doctorpage/{{doctor.user_id}}" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
-      <div class="doctor-box">
+      {% endfor %}
+
+
+
+      <!-- <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-2.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-2.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. Amy Pascal</h3>
         <p class="doctor-dept font-secondary">Dentist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-3.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-3.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. Henry Clide</h3>
         <p class="doctor-dept font-secondary">Surgeon</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-4.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-4.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. Clara Ranch</h3>
         <p class="doctor-dept font-secondary">Optometrists</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-1.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-1.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. David Smith</h3>
         <p class="doctor-dept font-secondary">Dermatologist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-1.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-1.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. David Smith</h3>
         <p class="doctor-dept font-secondary">Dermatologist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-1.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-1.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. David Smith</h3>
         <p class="doctor-dept font-secondary">Dermatologist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
       <div class="doctor-box">
         <div class="doctor-image">
-          <img
-            src="{% static 'images/doctor-1.jpg' %}"
-            alt=""
-            class="doctor-img"
-          />
+          <img src="{% static 'images/doctor-1.jpg' %}" alt="" class="doctor-img" />
         </div>
         <h3 class="doctor-name font-tertiary">Dr. David Smith</h3>
         <p class="doctor-dept font-secondary">Dermatologist</p>
-        <a href="#" class="blue-btn consult-doc-btn font-tertiary"
-          >Consult now</a
-        >
+        <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 

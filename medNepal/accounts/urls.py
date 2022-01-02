@@ -8,7 +8,7 @@ urlpatterns = [
    
     path('signup/patient', views.PatientSignUpView.as_view(), name='patient_signup'),
     path('signup/doctor', views.DoctorSignUpView.as_view(), name='doctor_signup'),
-    
+
     
 
 ]

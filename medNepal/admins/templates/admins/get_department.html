@@ -21,14 +21,15 @@
                     {% for file in files %}
                     <tr class="cap-height">
                         <td> {{ file.DeptName }}</td>
-                        <td> {{ file.deptPic }} </td>
+                        <td><img src="/{{file.deptPic}}" alt="file_image" width="100">
+                              </td>
                         <td>
                             <div style="max-height:300px" class="overflow-auto">{{ file.description|safe }}</div>
                         </td>
                         <td>{{file.appointmentFee}}</td>
 
-                        <td><a href="/update_department/{{file.id}}" class="btn btn-primary btn-sm m-2">Edit</a> &nbsp;
-                            <a href="/delete_department/{{file.id}}" class="btn btn-danger btn-sm m-2"
+                        <td><a href="/admins/update_department/{{file.id}}" class="btn btn-primary btn-sm m-2">Edit</a> &nbsp;
+                            <a href="/admins/delete_department/{{file.id}}" class="btn btn-danger btn-sm m-2"
                                 onclick="return confirm('Are you sure want to delete this file?')">Delete</a>
                         </td>
                     </tr>

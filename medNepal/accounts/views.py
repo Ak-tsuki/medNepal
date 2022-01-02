@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import LoginForm, PatientSignUpForm, DoctorSignUpForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import User,Patient
+from .models import User,Patient,Doctor
 
 
 
@@ -10,7 +10,14 @@ from django.views.generic import CreateView
 
 # Create your views here.
 def homepage(request):
-    return render(request, 'accounts/homepage.html')
+    
+    doctor_all = Doctor.objects.all()[:4]
+
+    context = {
+        'doctors': doctor_all,
+    }
+    
+    return render(request, 'accounts/homepage.html',context)
 
 
 def login_user(request):
@@ -71,6 +78,5 @@ class DoctorSignUpView(CreateView):
 def logout_user(request):
     logout(request)
     return redirect('/login')
-
 
 

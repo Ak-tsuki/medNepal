@@ -1,16 +1,12 @@
-{% extends 'layout.html' %} 
-{% load static %} 
+{% extends 'layout.html' %}
+{% load static %}
 {% block title %}
 <title>Homepage</title>
 {% endblock title %} {% block main_content %}
 <section class="hero-section">
   <div class="hero-container">
     <div class="hero-image">
-      <img
-        src="{% static 'images/image1-heroo.png' %}"
-        alt=""
-        class="hero-pic"
-      />
+      <img src="{% static 'images/image1-heroo.png' %}" alt="" class="hero-pic" />
     </div>
     <div class="hero-desc">
       <h1 class="font-heading-lg">Virtual healthcare for you</h1>
@@ -19,7 +15,7 @@
         online for everyone
       </p>
       <a href="" class="blue-btn hero-btn">Consult now</a>
-    </div> 
+    </div>
 </section>
 <section class="features-section">
   <!-- <div class="search-section">
@@ -38,81 +34,83 @@
     
   </div> -->
   <div class="feature-options">
-  <a href="/features/searchdoctor" class="search-doctor-btn">
-    <div class="feature-btn ">
-      <img src="{% static 'images/icon-search.png' %}" alt="" class="feature-icon">
-      Search doctor
-    </div>
-  </a>
-  <a href="#" class="pharmacy-btn">
-    <div class="feature-btn ">
-      <img src="{% static 'images/icon-pharmacy.png' %}" alt="" class="feature-icon">
-      Pharmacy
-    </div>
-  </a>
-  <a href="#" class="consultation-btn">
-    <div class="feature-btn ">
-      <img src="{% static 'images/icon-consultation.png' %}" alt="" class="feature-icon">
-      Consultation
-    </div>
-  </a>
-  <a href="#" class="appointment-btn">
-    <div class="feature-btn ">
-      <img src="{% static 'images/icon-appointment.png' %}" alt="" class="feature-icon">
-      Appointment
-    </div>
-  </a>
-</div>
-<div class="doctor-showcase">
-  <div class="doctor-box">
-    <div class="doctor-image">
-      <img src="{% static 'images/doctor-1.jpg' %}" alt="" class="doctor-img">
-    </div>
-    <h3 class="doctor-name font-tertiary">
-      Dr. David Smith
-    </h3>
-    <p class="doctor-dept font-secondary">
-      Dermatologist
-    </p>
-    <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
+    <a href="/features/searchdoctor" class="search-doctor-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-search.png' %}" alt="" class="feature-icon">
+        Search doctor
+      </div>
+    </a>
+    <a href="#" class="pharmacy-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-pharmacy.png' %}" alt="" class="feature-icon">
+        Pharmacy
+      </div>
+    </a>
+    <a href="#" class="consultation-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-consultation.png' %}" alt="" class="feature-icon">
+        Consultation
+      </div>
+    </a>
+    <a href="#" class="appointment-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-appointment.png' %}" alt="" class="feature-icon">
+        Appointment
+      </div>
+    </a>
   </div>
-  <div class="doctor-box">
-    <div class="doctor-image">
-      <img src="{% static 'images/doctor-2.jpg' %}" alt="" class="doctor-img">
+  <div class="doctor-showcase">
+    {% for doctor in doctors %}
+    <div class="doctor-box">
+      <div class="doctor-image">
+        <img src="/{{doctor.profile_pic}}" alt="" class="doctor-img">
+      </div>
+      <h3 class="doctor-name font-tertiary">
+        Dr. {{doctor.firstname}} {{doctor.lastname}}
+      </h3>
+      <p class="doctor-dept font-secondary">
+        {{doctor.departmentName}}
+      </p>
+      <a href="/features/doctorpage/{{doctor.user_id}}" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
     </div>
-    <h3 class="doctor-name font-tertiary">
-      Dr. Amy Pascal
-    </h3>
-    <p class="doctor-dept font-secondary">
-      Dentist
-    </p>
-    <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
-  </div>
-  <div class="doctor-box">
-    <div class="doctor-image">
-      <img src="{% static 'images/doctor-3.jpg' %}" alt="" class="doctor-img">
+    {% endfor %}
+    <!-- <div class="doctor-box">
+      <div class="doctor-image">
+        <img src="{% static 'images/doctor-2.jpg' %}" alt="" class="doctor-img">
+      </div>
+      <h3 class="doctor-name font-tertiary">
+        Dr. Amy Pascal
+      </h3>
+      <p class="doctor-dept font-secondary">
+        Dentist
+      </p>
+      <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
     </div>
-    <h3 class="doctor-name font-tertiary">
-      Dr. Henry Clide
-    </h3>
-    <p class="doctor-dept font-secondary">
-      Surgeon
-    </p>
-    <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
-  </div>
-  <div class="doctor-box">
-    <div class="doctor-image">
-      <img src="{% static 'images/doctor-4.jpg' %}" alt="" class="doctor-img">
+    <div class="doctor-box">
+      <div class="doctor-image">
+        <img src="{% static 'images/doctor-3.jpg' %}" alt="" class="doctor-img">
+      </div>
+      <h3 class="doctor-name font-tertiary">
+        Dr. Henry Clide
+      </h3>
+      <p class="doctor-dept font-secondary">
+        Surgeon
+      </p>
+      <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
     </div>
-    <h3 class="doctor-name font-tertiary">
-      Dr. Clara Ranch
-    </h3>
-    <p class="doctor-dept font-secondary">
-      Optometrists
-    </p>
-    <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
-  </div>
-</div>
+    <div class="doctor-box">
+      <div class="doctor-image">
+        <img src="{% static 'images/doctor-4.jpg' %}" alt="" class="doctor-img">
+      </div>
+      <h3 class="doctor-name font-tertiary">
+        Dr. Clara Ranch
+      </h3>
+      <p class="doctor-dept font-secondary">
+        Optometrists
+      </p>
+      <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
+    </div>
+  </div> -->
 
 </section>
 <section class="service-section">
@@ -120,10 +118,10 @@
     <h2 class="section-head font-primary">Our Services</h2>
     <div class="section-line"></div>
     <p class="section-text font-tertiary">
-      We provide to you the best choiches for you. 
-      Adjust it to your health needs and make sure 
-      your undergo treatment with our highly qualified 
-      doctors you can consult with us which type of 
+      We provide to you the best choiches for you.
+      Adjust it to your health needs and make sure
+      your undergo treatment with our highly qualified
+      doctors you can consult with us which type of
       service is suitable for your health
     </p>
   </div>
@@ -134,7 +132,7 @@
         Search doctor
       </h3>
       <p class="service-text font-default">
-        Choose your doctor from thousands of specialist, 
+        Choose your doctor from thousands of specialist,
         general, and trusted hospitals
       </p>
     </div>
@@ -182,7 +180,7 @@
         Lab Test
       </h3>
       <p class="service-text font-default">
-        Track and save your medical history and health data 
+        Track and save your medical history and health data
       </p>
     </div>
   </div>
@@ -193,10 +191,10 @@
       <img src="{% static 'images/image3-aboutsection.png' %}" alt="" class="about-img">
     </div>
     <p class="about-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Vestibulum etiam nulla aliquam nibh venenatis. 
-      Eget tellus, tempor pretium risus elit. 
-      Amet lacinia varius scelerisque faucibus. 
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Vestibulum etiam nulla aliquam nibh venenatis.
+      Eget tellus, tempor pretium risus elit.
+      Amet lacinia varius scelerisque faucibus.
       Rhoncus magnis aliquam interdum scelerisque eleifend sit et eleifend.
     </p>
   </div>
@@ -211,15 +209,15 @@
       <div class="article-image">
         <img src="{% static 'images/article-1.png' %}" alt="" class="article-img">
       </div>
-      
+
       <div class="article-desc">
         <h3 class="article-heading font-secondary">
-          Disease detection, check 
-up in the laboratory
+          Disease detection, check
+          up in the laboratory
         </h3>
         <p class="article-text font-default">
           In this case, the role of the health laboratory is very important to do
-a disease detection...
+          a disease detection...
         </p>
         <a href="#" class="read-more-btn">Read more &rarr;</a>
       </div>
@@ -228,11 +226,11 @@ a disease detection...
       <div class="article-image">
         <img src="{% static 'images/article-2.png' %}" alt="" class="article-img">
       </div>
-      
+
       <div class="article-desc">
         <h3 class="article-heading font-secondary">
-          Herbal medicines that are 
-safe for consumption
+          Herbal medicines that are
+          safe for consumption
         </h3>
         <p class="article-text font-default">
           Herbal medicine is very widely used at this time because of its very good for your health...
@@ -244,15 +242,15 @@ safe for consumption
       <div class="article-image">
         <img src="{% static 'images/article-3.png' %}" alt="" class="article-img">
       </div>
-      
+
       <div class="article-desc">
         <h3 class="article-heading font-secondary">
-          Natural care for healthy 
+          Natural care for healthy
           facial skin
         </h3>
         <p class="article-text font-default">
           A healthy lifestyle should start from now and also for your skin health.
-There are some...
+          There are some...
         </p>
         <div class="read-more-btn-container">
           <a href="#" class="read-more-btn">Read more &rarr;</a>
