@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from .filters import *
 from accounts.models import Doctor, Patient, Department
 from accounts.forms import DepartmentForm
+from .forms import MedicineCategoryForm, MedicineForm
+from .models import MedicineCategory, Medicine
 from django.contrib import messages
 import os
 # Create your views here.
@@ -113,4 +115,109 @@ def update_department(request, department_id):
 
 
 
+def post_medicine_category(request):
+    if request.method == 'POST':
+        form = MedicineCategoryForm(request.POST,request.FILES)
 
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Medicine Category Added Successfully")
+            return redirect('/admins/get_medicine_category')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to Add Medicine Category")
+            return render(request, 'admins/post_medicine_category.html', {'form_medicine_category': form})
+
+    context = {
+        'form_medicine_category': MedicineCategoryForm,
+        # 'activate_post_department': 'active'
+    }
+    return render(request, 'admins/post_medicine_category.html', context)
+
+def get_medicine_category(request):
+    medicine_category = MedicineCategory.objects.all().order_by('-id')
+
+    context = {
+        'files': medicine_category,
+    }
+    return render(request, 'admins/get_medicine_category.html', context)
+
+
+def delete_medicine_category(request, medicine_category_id):
+    medicine_category = MedicineCategory.objects.get(id=medicine_category_id)
+    medicine_category.delete()
+    messages.add_message(request, messages.SUCCESS, "Succeccfully deleted")
+    return redirect('/admins/get_medicine_category')
+
+def update_medicine_category(request, medicine_category_id):
+    medicine_category = MedicineCategory.objects.get(id=medicine_category_id)
+
+    if request.method == 'POST':            
+        form = MedicineCategoryForm(request.POST, request.FILES, instance=medicine_category)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Updated successfully")
+            return redirect('/admins/get_medicine_category')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to update successfully")
+            return render(request, 'admins/update_medicine_category.html', {'form_medicine_category': form})
+
+    context = {
+        'form_medicine_category': MedicineCategoryForm(instance=medicine_category),
+    }
+    return render(request, 'admins/update_medicine_category.html', context)
+
+def post_medicine(request):
+    if request.method == 'POST':
+        form = MedicineForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Medicine Added Successfully")
+            return redirect('/admins/get_medicine')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to Add Medicine")
+            return render(request, 'admins/post_medicine.html', {'form_medicine': form})
+
+    context = {
+        'form_medicine': MedicineForm,
+        # 'activate_post_department': 'active'
+    }
+    return render(request, 'admins/post_medicine.html', context)
+
+def get_medicine(request):
+    medicine = Medicine.objects.all().order_by('-id')
+
+    context = {
+        'files': medicine,
+    }
+    return render(request, 'admins/get_medicine.html', context)
+
+def delete_medicine(request, medicine_id):
+    medicine = Medicine.objects.get(id=medicine_id)
+    medicine.delete()
+    os.remove(medicine.medicine_image.path)
+    messages.add_message(request, messages.SUCCESS, "Succeccfully deleted")
+    return redirect('/admins/get_medicine')
+
+def update_medicine(request, medicine_id):
+    medicine = Medicine.objects.get(id=medicine_id)
+
+    if request.method == 'POST':
+        if request.FILES.get('medicine_image'):
+            os.remove(medicine.medicine_image.path)
+            
+        form = MedicineForm(request.POST, request.FILES, instance=medicine)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Updated successfully")
+            return redirect('/admins/get_medicine')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to update successfully")
+            return render(request, 'admins/update_medicine.html', {'form_medicine': form})
+
+    context = {
+        'form_medicine': MedicineForm(instance=medicine),
+    }
+    return render(request, 'admins/update_medicine.html', context)
