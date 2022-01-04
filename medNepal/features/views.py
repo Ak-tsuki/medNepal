@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from accounts.models import Department, Doctor
+from admins.models import MedicineCategory,Medicine
 
 # =====================Article Page Part========================================
 def article(request):
@@ -19,7 +20,13 @@ def doctorpage(request, d_id):
 
 # =====================Pharmacy Page Part========================================
 def pharmacy(request):
-    return render(request, 'features/pharmacy.html')
+    pharmacy_category_all= MedicineCategory.objects.all()
+    # pharmacy_all = Medicine.objects.all()
+    context = {
+        'medicine_category': pharmacy_category_all,
+        # 'medicines': pharmacy_all,
+    }
+    return render(request, 'features/pharmacy.html',context)
 
 # =====================SearchDoctor Page Part========================================
 def searchdoctor(request):

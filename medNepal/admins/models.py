@@ -15,7 +15,7 @@ class Medicine(models.Model):
     medicine_name = models.CharField(max_length=200)
     medicine_price = models.FloatField()
     medicine_image = models.FileField(upload_to='static/medicine_uploads', null = True)
-    category = models.ForeignKey(MedicineCategory, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(MedicineCategory, on_delete=models.CASCADE, null=True, related_name='category_medicine')
     created_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

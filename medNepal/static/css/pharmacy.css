@@ -48,6 +48,11 @@ color: #FFFFFF;
   padding: 10px 15px;
 }
 
-.plusicon, .minusicon{
+/* .plusicon, .minusicon{
   background-color: #EDE4E4;
+} */
+
+.p-image img {
+  width: 180px;
+
 }
