@@ -81,3 +81,5 @@ def logout_user(request):
     return redirect('/login')
 
 
+def emergengy_service(request):
+    return render(request, "accounts/emergency.html")

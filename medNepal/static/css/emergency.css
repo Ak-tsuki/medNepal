@@ -1,0 +1,90 @@
+.emergency-section {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.emergency-hero {
+  background: linear-gradient(
+    177.87deg,
+    #b0f4ff 12.83%,
+    rgba(176, 244, 255, 0) 79.53%
+  );
+  border-radius: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+
+.ambulance-image {
+  width: 590px;
+  margin: 0 auto;
+}
+
+.ambulance-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.emergency-desc {
+  max-width: 590px;
+}
+
+.emergency-header {
+  font-weight: bold;
+  color: #792c2c;
+}
+
+.ambu-no {
+  border: 1px solid #458dfc;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: 17px;
+  display: inline-block;
+  padding: 10px;
+  min-width: 166px;
+}
+
+.hospital-detail > * {
+  display: block;
+}
+
+.hospital-name {
+  color: #4089ed;
+  font-weight: bold;
+}
+
+.ambu-details {
+  display: flex;
+}
+.hospital-detail {
+  margin-bottom: 10px;
+}
+
+.ambulance-numbers {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2%;
+}
+@media (max-width: 1280px) {
+  .emergency-desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 830px) {
+  .ambu-details {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 490px) {
+  .ambulance-numbers {
+    flex-direction: column;
+    align-items: center;
+  }
+}

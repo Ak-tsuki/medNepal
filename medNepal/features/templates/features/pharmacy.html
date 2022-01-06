@@ -1,9 +1,9 @@
-{% extends 'layout.html' %} 
+{% extends 'layout.html' %}
 {% load bootstrap %}
-{% load static %} 
+{% load static %}
 {% block title %}
 <title>Pharmacy</title>
-{% endblock title %} 
+{% endblock title %}
 {% block main_content %}
 
 
@@ -20,203 +20,115 @@
       </ul>
     </div>
     <div class="search-dept">
-      <input type="text" class="search-dept-input font-default" placeholder="Search doctors..."><i class="fas fa-search search-box-icon"></i>
+      <input type="text" class="search-dept-input font-default" placeholder="Search doctors..."><i
+        class="fas fa-search search-box-icon"></i>
     </div>
   </div>
-  <div class="cat-title badge text-center mb-5">
-    <h1 class="med-cat-title mb-0 p-2">Common Medicine</h1>
-  </div>
-  <div class="d-flex flex-wrap justify-content-between mb-5">
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
+  {% for pharmacy_category in medicine_category %}
+  <div>
+    <div class="cat-title badge text-center mb-5">
+      <h1 class="med-cat-title mb-0 p-2">{{pharmacy_category.med_category_name}}</h1>
     </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="pharmacy-main container-fluid p-5">
-  <div class="cat-title badge text-center mb-5">
-    <h1 class="med-cat-title mb-0 p-2">Health Supplements</h1>
-  </div>
-  <div class="d-flex flex-wrap justify-content-between mb-5">
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
-      <div class="card-image p-4">
-        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="med-title card-title">Paracetamol</h5>
-        <p class="med-price card-text m-0">Rs. 150</p>
-        <div class="d-flex align-items-center pb-1">
-          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
-          <div class="fs-4 ps-2 pe-2">0</div>
-          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
-        </div>
-        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
-      </div>
-    </div>
-  </div>
-</section>
 
+    <div class="d-flex flex-wrap justify-content-between mb-5">
+
+      {% for pharmacy in pharmacy_category.category_medicine.all %}
+      <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+        <div class="card-image p-image">
+          <img src="/{{pharmacy.medicine_image}}" class="card-med img-fluid" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="med-title card-title">{{pharmacy.medicine_name}}</h5>
+          <p class="med-price card-text m-0">Rs. {{pharmacy.medicine_price}}</p>
+          <!-- <div class="d-flex align-items-center pb-1">
+            <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+            <div class="fs-4 ps-2 pe-2">0</div>
+            <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+          </div> -->
+          <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <!-- <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text m-0">Rs. 150</p>
+        <div class="d-flex align-items-center pb-1">
+          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+          <div class="fs-4 ps-2 pe-2">0</div>
+          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+        </div>
+        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text m-0">Rs. 150</p>
+        <div class="d-flex align-items-center pb-1">
+          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+          <div class="fs-4 ps-2 pe-2">0</div>
+          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+        </div>
+        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text m-0">Rs. 150</p>
+        <div class="d-flex align-items-center pb-1">
+          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+          <div class="fs-4 ps-2 pe-2">0</div>
+          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+        </div>
+        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text m-0">Rs. 150</p>
+        <div class="d-flex align-items-center pb-1">
+          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+          <div class="fs-4 ps-2 pe-2">0</div>
+          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+        </div>
+        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+      </div>
+    </div>
+    <div class="medicine-card card flex-row align-items-center ps-4 pe-4 mb-4">
+      <div class="card-image p-4">
+        <img src="{% static 'images/Medicine.png' %}" class="card-med img-fluid" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="med-title card-title">Paracetamol</h5>
+        <p class="med-price card-text m-0">Rs. 150</p>
+        <div class="d-flex align-items-center pb-1">
+          <a href="#" class="plusicon ps-1 pe-1 fs-5 rounded-3"><i class="fas fa-plus"></i></i></a>
+          <div class="fs-4 ps-2 pe-2">0</div>
+          <a href="#" class="minusicon fs-5 ps-1 pe-1 rounded-3"><i class="fas fa-minus"></i></i></a>
+        </div>
+        <a href="#" class="cartbtn btn white-btn">Add To Cart</a>
+      </div>
+    </div> -->
+  </div>
+
+</section>
 
 
 
