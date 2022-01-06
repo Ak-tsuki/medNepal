@@ -1,0 +1,38 @@
+{% extends 'layout-doctor.html' %}
+{% load static %}
+{% block title %}
+<title>Doctor-Dashboard</title>
+{% endblock %}
+{% block main_content %}
+<style>
+    .mylink{
+    color:white;
+    text-decoration:none;
+    transition: all 2s;
+    }
+    .mylink:hover{
+    color:brown;
+
+    }
+    .card-body:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    transition-duration:2s;
+    }
+</style>
+
+
+
+<div class="container main my-5 text-uppercase">
+    {% include 'messages.html' %}
+    <div class="d-flex justify-content-center my-5">
+        <div class="wrapper">
+            <div class="admincard wow slideInLeft">
+                <h1>
+                    <span class="enclosed">Doctor</span>Dashboard
+                </h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

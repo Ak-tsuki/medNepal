@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'features.apps.FeaturesConfig',
     'admins.apps.AdminsConfig',
+    'doctors.apps.DoctorsConfig',
+    'patients.apps.PatientsConfig',
     'bootstrapform',
     'django_filters',
     'ckeditor',

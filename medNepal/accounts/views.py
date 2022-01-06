@@ -30,8 +30,9 @@ def login_user(request):
 
             if user is not None:
                 if not user.is_staff:
-                    login(request, user)
-                    return redirect('/')
+                    if user.is_doctor:
+                        login(request, user)
+                        return redirect('/doctors')
                 elif user.is_staff:
                     login(request, user)
                     return redirect('/admins')
