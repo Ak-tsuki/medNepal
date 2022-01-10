@@ -33,6 +33,9 @@ def login_user(request):
                     if user.is_doctor:
                         login(request, user)
                         return redirect('/doctors')
+                    elif user.is_patient:
+                        login(request, user)
+                        return redirect('/patients')
                 elif user.is_staff:
                     login(request, user)
                     return redirect('/admins')
