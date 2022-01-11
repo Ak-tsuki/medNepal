@@ -31,7 +31,7 @@ class Patient(models.Model):
     phone = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     age = models.IntegerField(null=True)
-    profile_pic = models.FileField(upload_to='static/patientProfile', default='static/default_user.png')
+    profile_pic = models.FileField(upload_to='static/patientProfile', default='static/default_user.png', null=True)
     gender = models.CharField(choices=gender_CHOICES,max_length=50)
     
     def __str__(self):
