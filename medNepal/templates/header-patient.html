@@ -1,0 +1,39 @@
+<section class="header-section">
+  <a href="/">
+    <div class="logo-container">
+      <div class="logo">MN</div>
+      <h2 class="logo-text">medNepal</h2>
+    </div>
+  </a>
+  <div class="navi-menu">
+    <div class="menu-line menu-line1"></div>
+    <div class="menu-line menu-line2"></div>
+    <div class="menu-line menu-line3"></div>
+  </div>
+  <nav class="navi-bar">
+    <ul class="navi-list">
+      <li class="navi-item"><a href="/" class="navi-link">Home</a></li>
+      <li class="navi-item"><a href="/features/searchdoctor" class="navi-link">Find a doctor</a></li>
+      <li class="navi-item"><a href="/#services" class="navi-link">Our services</a></li>
+      <li class="navi-item"><a href="/#articles" class="navi-link">Articles</a></li>
+      <li class="navi-item"><a href="/#about-us" class="navi-link">About Us</a></li>
+      <li class="navi-item">
+        <img src="/{{patient.profile_pic}}" class="rounded-circle" style="object-fit: cover;" alt="file_image"
+          width="35px" , height="35px"> {{user}}
+        <a href="{% url 'logout' %}" class="white-btn login-btn">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+<script>
+  const navMenu = document.querySelector(".navi-menu");
+  const navigation = document.querySelector(".navi-bar");
+
+  navMenu.addEventListener("click", () => {
+    navigation.classList.toggle("open");
+    navMenu.classList.toggle("open-menu");
+    console.log("hello");
+  });
+
+  console.log("hello");
+</script>

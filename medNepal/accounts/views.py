@@ -10,13 +10,13 @@ from django.views.generic import CreateView
 
 # Create your views here.
 def homepage(request):
-    user = request.user
-    patient = Patient.objects.get(user_id=user.id)
+    # user = request.user
+    # patient = Patient.objects.get(user_id=user.id)
     doctor_all = Doctor.objects.all()[:4]
 
     context = {
-        'patient':patient,
-        'user':user,
+        # 'patient':patient,
+        # 'user':user,
         'doctors': doctor_all,
     }
     

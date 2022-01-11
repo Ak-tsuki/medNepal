@@ -1,9 +1,18 @@
 from django.shortcuts import render, redirect
+from accounts.models import Patient
 from admins.models import Medicine
 from .models import Cart
 from django.contrib import messages
 
 # Create your views here.
+# def patient_homepage(request):
+#     user = request.user
+#     patient = Patient.objects.get(user_id=user.id)
+#     context = {
+#         'patient':patient,
+#         'user':user
+#     }   
+#     return render(request, 'patients/homepage.html',context)
 
 #Add To Cart
 def add_to_cart(request, medicine_id):
