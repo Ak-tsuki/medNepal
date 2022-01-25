@@ -1,0 +1,49 @@
+{% extends 'layout-doctor.html' %}
+{% load static %}
+{% block title %}
+<title>My Appointment</title>
+{% endblock%}
+
+{% block main_content %}
+
+<div class="my-cart container-fluid mt-5" style="min-height:100vh;">
+    <div class="row mt-5">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <h1 class="text-center display-2 mb-3" data-aos="fade-up" data-aos-duration="2000">My Appointment</h1>
+            {% include 'messages.html' %}
+            <div class="card py-2 px-2 text-center">
+                <table class="table-striped text-white bg-dark" data-aos="fade-up" data-aos-duration="2000">
+                    <tr class="p-2 m-2 fs-2">
+                        <th>Patient</th>
+                        <th>appointment_Date_Time</th>
+                        <th>status</th>
+                        <th>booked_date</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for i in appointments %}
+                    <tr class="border border-2">
+                        <td>{{i.patient.firstname}}</td>
+                        <td> {{ i.appointment_Date_Time }}</td>
+                        {% if i.status == False %}
+                        <td> Pending </td>
+                        {% else %}
+                        <td> Accepted </td>
+                        {% endif %}
+                        <td> {{ i.booked_date }}</td>
+                        <td>
+                            <a href="/doctors/accept_appointment/{{i.id}}" class="btn btn-success btn-sm"
+                                onclick="return confirm('Are you sure want to accept this Appointment?')">Accept 
+                            </a>
+                            <a href="/doctors/remove_appointment/{{i.id}}" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure want to remove this Appointment?')"><i
+                                    class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

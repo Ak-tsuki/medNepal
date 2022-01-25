@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+<title>My Appointments</title>
+{% endblock%}
+{% block main_content %}
+<h2 class="font-primary app-heading mb-4 text-center"><i class="fas fa-calendar-check app-icon"></i> My Appointments</h2>
+<div class="app-showcase">
+    {% for i in appointments %}
+    <div class="app-box mb-4">
+        <div class="app-image">
+            <img src="/{{i.doctor.profile_pic}}" alt="" class="app-img">
+        </div>
+        <div class="app-details font-default">
+            <div class="app-doc"><span class="app-details-head">Doctor : </span>{{i.doctor.firstname}} {{i.doctor.lastname}}</div>
+            <div class="app-date"><span class="app-details-head">Appointment Date : </span>{{ i.appointment_Date_Time }}</div>
+            <div class="app-status"><span class="app-details-head">Status : </span>
+                {% if i.status == False %}
+                Pending
+                {% else %}
+                Accepted
+                {% endif %}
+                </div>
+            <div class="app-book-date"><span class="app-details-head">Booked Date : </span>{{ i.booked_date }}</div>
+            <div> <a href="/patients/remove_book_appointment/{{i.id}}" onclick="return confirm('Are you sure want to remove this Appointment?')" class=" app-cancel-btn btn-danger"> Cancel booking</a></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

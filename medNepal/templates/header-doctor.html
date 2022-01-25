@@ -9,17 +9,21 @@
                 aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="/admins"> Doctor Dashboard</a>
-            <a href="/admins/show_contactus" class="me-4 fs-4 text-light"><i class="bi bi-envelope">
+            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="/doctors"> Doctor Dashboard</a>
+            <a href="/docotrs/show_contactus" class="me-4 fs-4 text-light"><i class="bi bi-envelope">
                     <span class="position-absolute top-10 start-85 translate-middle badge rounded-pill bg-danger"
                         style="font-size:10px;">
                         {{contact}}
                         <span class="visually-hidden">unread messages</span>
                     </span></i></a>
+
+            <a href="{% url 'inbox_doctor' %}">inbox</a>
+
             <div class="dropdown">
                 <a class="text-decoration-none dropdown-toggle fs-5 text-light" href="#" role="button"
                     id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="/{{doctor.profile_pic}}" class="rounded-circle" style="object-fit: cover;" alt="file_image" width="35px", height="35px"> {{user}}
+                    <img src="/{{doctor.profile_pic}}" class="rounded-circle" style="object-fit: cover;"
+                        alt="file_image" width="35px" , height="35px"> {{user}}
                 </a>
                 <a href="{% url 'logout' %}" class="ms-2 btn btn-sm btn-danger">Logout</a>
 

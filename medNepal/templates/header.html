@@ -19,6 +19,9 @@
       <li class="navi-item"><a href="/#about-us" class="navi-link">About Us</a></li>
       {% if user.is_authenticated %}
       <li class="navi-item">
+          <a href="{% url 'inbox' %}">inbox</a>
+      </li>
+      <li class="navi-item">
         <a href="/patients/get_profile"><img src="/{{request.user.patient.profile_pic}}" class="rounded-circle"
             style="object-fit: cover;" alt="file_image" width="35px" , height="35px"> {{user}}</a>
         <a href="{% url 'logout' %}" class="white-btn login-btn">Logout</a>
