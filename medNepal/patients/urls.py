@@ -24,4 +24,15 @@ urlpatterns = [
     
     path('inbox/<int:pk>/', views.ThreadView.as_view(), name='thread'),
     path('indox/<int:pk>/create-message/', views.CreateMessage.as_view(), name='create-message'),
+
+    # Order Form Food Page Path User Part
+    path('order_form/<int:medicine_id>/<int:cart_id>', views.order_form),
+    # Esewa Page Path User Part
+    path('esewa_verify', views.esewa_verify),
+    # Order Food Page Path User Part
+    path('my_order', views.my_order, name='my_order'),
+    # Order Food Page Path Admin Part
+    path('get_order', views.get_order),
+    path('deleteOrder/<int:order_id>', views.deleteOrder),
+    path('updateOrder/<int:order_id>', views.updateOrder),
 ]

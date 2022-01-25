@@ -3,7 +3,7 @@ from pyexpat import model
 from django import forms
 from django.forms import ModelForm, widgets
 from accounts.models import Patient
-from .models import Appointment
+from .models import Appointment, Order
 
 class Profile_Form(ModelForm):
     class Meta:
@@ -26,3 +26,8 @@ class Appointment_Form(ModelForm):
      
 class MessageForm(forms.Form):
     message = forms.CharField(label='', max_length=1000)
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['quantity', 'contact_no', 'contact_address', 'payment_method']
