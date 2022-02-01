@@ -1,65 +1,29 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block title %}
-<title>MyOrders</title>
+<title>My Orders</title>
 {% endblock title %}
 {% block main_content %}
-<style>
-    .my-order{
-        background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../static/images/mycart.jpg) no-repeat center;
-    }
-
-
-
-</style>
-
-<div class="my-order container-fluid p-5">
-    <div class="row">
-        <div class="col mt-4 mb-4">
-            <h1 class="text-center text-white text-uppercase m-4 font-weight-bold" data-aos="fade-up"
-                data-aos-duration="2000">My Order History</h1>
-            {% include 'messages.html' %}
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <table class="table bg-dark text-white">
-                        <thead class="bg-light text-dark border border-dark border-1" data-aos="fade-up"
-                               data-aos-duration="2000">
-                        <tr data-aos="fade-left" data-aos-duration="2000">
-                            <th>Medicine Image</th>
-                            <th>Medicine Name</th>
-                            <th>Medicine Price</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Ordered Date</th>
-                            <th>Contact No</th>
-                            <th>Delivery Location</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody class="align-items-center">
-                        {% for item in items %}
-                        <tr data-aos="fade-right" data-aos-duration="2000">
-                            <td><img src="/{{item.medicine.medicine_image}}" alt="" class="cart-item-img" style="width: 30%;"/></td>
-                            <td>{{item.medicine.medicine_name}}</td>
-                            <td>Rs. {{item.medicine.medicine_price}}</td>
-                            <td>{{item.quantity}}</td>
-                            <td>{{item.total_price}}</td>
-                            <td>{{item.created_date}}</td>
-                            <td>{{item.contact_no}}</td>
-                            <td>{{item.contact_address}}</td>
-                            <td>{{item.status}}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+<div class="order-container">
+    <h2 class="font-primary order-heading mb-4 text-center"><i class="fas fa-shipping-fast order-icon"></i> My Orders</h2>
+    {% for item in items %}
+    <div class="order-item-showcase">
+        <div class="order-item-card">
+            <div class="order-item-image">
+                <img src="/{{item.medicine.medicine_image}}" alt="" class="order-item-img" />
+            </div>
+            <div class="order-item-details font-default">
+                <div class="order-item-name font-secondary">{{item.medicine.medicine_name}}</div>
+                <div class=" order-item-price"><span class="item-details-head">Medicine Price: </span>Rs. <span>{{item.medicine.medicine_price}}</span></div>
+                <div class=""><span class="item-details-head">Quantity: </span>{{item.quantity}}</div>
+                <div class="order-item-price"><span class="item-details-head">Total Price: </span>Rs.<span>{{item.total_price}}</span></div>
+                <div class=" "><span class="item-details-head">Ordered Date: </span>{{item.created_date}}</div>
+                <div class=" "><span class="item-details-head">Contact: </span>{{item.contact_no}}</div>
+                <div class=" "><span class="item-details-head">Delivery Location: </span>{{item.contact_address}}</div>
+                <div class=""><span class="item-details-head">Status: </span> {{item.status}}</div>
             </div>
         </div>
     </div>
-    <div class="row justify-content-center" data-aos="fade-down" data-aos-duration="2000">
-        <a href="/patients/my_cart" class="col-md-2 btn btn-outline-light btn-lg p-3 m-3"
-           onclick="return confirm('Are you sure want to go back to ordering medicine?')"><i
-                class="far fa-shopping-bag"></i> Continue Ordering</a>
-    </div>
+    {% endfor %}
 </div>
-
 {% endblock %}
