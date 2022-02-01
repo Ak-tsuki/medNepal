@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.db.models import Q
 
 from accounts.models import Doctor
-from patients.forms import MessageForm
+from patients.forms import Appointment_Form, MessageForm
 from patients.models import Appointment, MessageModel, ThreadModel
 from .forms import Profile_Form
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -17,10 +17,13 @@ from django.contrib.auth.decorators import login_required
 
 def doctor_dashboard(request):
     user = request.user
-    doctor = Doctor.objects.get(user_id=user.id)
+    doctor = Doctor.objects.get(user_id=user.id),
+    threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user)).count()
+    
     context = {
         'doctor':doctor,
-        'user':user
+        'user':user,
+        'threads':threads
     }   
     return render(request, 'doctors/homepage.html',context)
 
@@ -98,6 +101,19 @@ def remove_appointment(request, appointment_id):
     messages.add_message(request, messages.SUCCESS, 'Booked appointment Removed Successfully')
     return redirect('/doctors/show_appointment')
 
+def update_appointment(request,appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    if request.method == 'POST':
+        form = Appointment_Form(request.POST, request.FILES, instance=appointment)  
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Appointment Date updated Successfully')
+            return redirect('/doctors/show_appointment')
+            
+    context = {
+        'form_Appointment': Appointment_Form(instance=appointment)
+        }
+    return render(request, 'doctors/update_appointment.html', context)
 
 
 class ListThreads(View):

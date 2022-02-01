@@ -1,0 +1,31 @@
+{% extends 'layout-admin.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}
+<title>Update Appointment</title>
+{% endblock title %}
+{% block main_content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+<div class="doctorpage-container">
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="card" style="width:60%">
+                <div class="card-body">
+                    <img src="https://www.healserv.com/blog/wp-content/uploads/2020/10/isometric-appointment-booking-with-calendar_23-2148565453.jpg"
+                        alt="" style="object-fit: cover; width:100%">
+                    <form class="form m-5" action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form_Appointment }}
+                        <button type="submit" class="d-block mt-3 btn btn-primary shadow-lg rounded-3">Summit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

@@ -5,10 +5,14 @@
 <title>Search Doctor</title>
 {% endblock title %}
 {% block main_content %}
-
+<style>
+  #id_name{
+    width: 160%;
+  }
+</style>
 
 <section class="doctor-page">
-  <div class="search-section">
+  <!-- <div class="search-section">
     <div class="select-dept font-default">
       Select department <i class="fas fa-caret-down dropdown-dept-icon"></i>
       <ul class="dept-list">
@@ -23,7 +27,16 @@
         class="fas fa-search search-box-icon"></i>
     </div>
 
+  </div> -->
+
+  <div class="my-4">
+    <form action="" class="form d-flex flex-wrap justify-content-center mb-5" method="GET">
+      {{ doctor_filter.form | bootstrap_horizontal }}
+      <button style="width:100px; margin-left:100px" type="'summit" class="btn btn-primary btn-sm mt-3"><i class="fas fa-search"></i>
+        Search</button>
+    </form>
   </div>
+
   <div class="doctor-container">
     <h3 class="doctor-showcase-title">Featured Doctors</h3>
     <div class="doctor-showcase doctor-showcase2">
@@ -97,7 +110,7 @@
         <a href="#" class="blue-btn consult-doc-btn font-tertiary">Consult now</a>
       </div>
     </div> -->
-  </div>
+    </div>
 </section>
 
 {% endblock main_content %}

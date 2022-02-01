@@ -34,5 +34,29 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col my-2">
+            <div class="wow slideInRight card text-white bg-success mb-3 shadow rounded-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <a href="{% url 'show_appointment' %}" class="text-center mylink">
+                        <h1></h1>
+                        <h3>My Appointment</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col my-2">
+            <div class="wow slideInRight card text-white bg-success mb-3 shadow rounded-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <a href="{% url 'inbox_doctor' %}" class="text-center mylink">
+                        <h1>{{threads}}</h1>
+                        <h3>Message</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

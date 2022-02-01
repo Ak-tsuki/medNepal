@@ -13,12 +13,14 @@ urlpatterns = [
     path('show_book_appointment', views.show_book_appointment, name='show_book_appointment'),
     path('remove_book_appointment/<int:appointment_id>', views.remove_book_appointment),
     
+    path('book_labtest', views.book_labtest),
+    path('show_book_labtest', views.show_book_labtest, name='show_book_labtest'),
+    
     path('get_profile', views.get_profile),
     path('update_profile', views.update_profile),
     path('password_change', views.password_change),
     
     path('inbox/', views.ListThreads.as_view(),name='inbox'),
-   # path('inbox/create-thread/', views.CreateThread.as_view(), name='create-thread'),
     
     path('inbox/create-thread-view/<int:d_id>', views.createThread, name='create-thread-view'),
     

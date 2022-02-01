@@ -25,6 +25,20 @@ class Appointment(models.Model):
     booked_date = models.DateTimeField(auto_now_add=True)
     
 
+class LabTest(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    labtest_Date_Time = models.DateTimeField()
+    status = models.BooleanField(default=False)
+    booked_date = models.DateTimeField(auto_now_add=True)
+    report = models.FileField(upload_to='static/patientLabreport', null = True)
+    
+    
+# class Labreport(models.Model):
+#     labtest = models.ForeignKey(LabTest,on_delete=models.CASCADE)
+    
+#     uploadeddate = models.DateTimeField(auto_now_add=True, null=True)
+
+
 class ThreadModel(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='+')
     receiver = models.ForeignKey(User,on_delete=models.CASCADE, related_name='+')

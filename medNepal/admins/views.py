@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import get_user_model
+from patients.forms import LabTest_Form
+
+from patients.models import LabTest
 from .filters import *
 from accounts.models import Doctor, Patient, Department
 from accounts.forms import DepartmentForm
-from .forms import MedicineCategoryForm, MedicineForm
+from .forms import LabReportForm, MedicineCategoryForm, MedicineForm
 from .models import MedicineCategory, Medicine
 from django.contrib import messages
 import os
@@ -15,24 +18,23 @@ def admin_dashboard(request):
     doctor_count = users.filter(is_doctor=1).count()
     patient_count = users.filter(is_patient=1).count()
     admin_count = users.filter(is_staff=1).count()
+    labtest = LabTest.objects.all().count()
 
     context = {
         'doctor': doctor_count,
         'patient': patient_count,
-        'admin': admin_count
+        'admin': admin_count,
+        'labtest':labtest
     }
 
     return render(request, 'admins/homepage.html', context)
 
 
 def get_doctor(request):
-
     user_all = Doctor.objects.all()
-
     context = {
         'users': user_all,
     }
-
     return render(request, 'admins/show_doctor.html', context)
 
 
@@ -48,6 +50,17 @@ def get_patient(request):
     }
 
     return render(request, 'admins/show_patient.html', context)
+
+def get_admin(request):
+    users_all = User.objects.all()
+    admins = users_all.filter(is_staff=1)
+
+
+    context = {
+        'admins': admins,
+    }
+
+    return render(request, 'admins/show_admin.html', context)
 
 
 
@@ -221,3 +234,48 @@ def update_medicine(request, medicine_id):
         'form_medicine': MedicineForm(instance=medicine),
     }
     return render(request, 'admins/update_medicine.html', context)
+
+
+def show_book_labtest(request):
+    labtest = LabTest.objects.all()
+    context = {
+        'labtests': labtest,
+    }
+    return render(request, 'admins/show_book_labtest.html', context)
+
+def update_labtest(request,labtest_id):
+    labtest = LabTest.objects.get(id=labtest_id)
+    if request.method == 'POST':
+        form = LabTest_Form(request.POST, request.FILES, instance=labtest)  
+        if form.is_valid():
+            form.save()
+            return redirect('/admins/show_book_labtest')
+            
+    context = {
+        'form_labtest': LabTest_Form(instance=labtest)
+    }
+    return render(request, 'admins/update_labtest.html',context)
+
+def accept_labtest(request, labtest_id):
+    labtest = LabTest.objects.get(id=labtest_id)
+    labtest.status = True
+    labtest.save()
+    messages.add_message(request, messages.SUCCESS, 'labtest accepted  Successfully')
+    return redirect('/admins/show_book_labtest')
+
+def upload_labreport(request, labtest_id):
+    labtest = LabTest.objects.get(id=labtest_id)
+    if request.method == 'POST':
+        form = LabReportForm(request.POST, request.FILES)  
+        if form.is_valid():
+            report = form.cleaned_data.get('report')
+            labtest.report = report
+            labtest.save()
+            return redirect('/admins/show_book_labtest')
+            
+    context = {
+        'form_labreport': LabReportForm()
+    }
+    return render(request, 'admins/upload_labreport.html',context)
+
+    

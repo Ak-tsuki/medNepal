@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+<title>My Lab Test</title>
+{% endblock%}
+{% block main_content %}
+<h2 class="font-primary app-heading mb-4 text-center"><i class="fas fa-calendar-check app-icon"></i> My Lab Test</h2>
+{% include 'messages.html' %}
+<div class="app-showcase">
+    {% for i in labtests %}
+    <div class="app-box mb-4">
+        <div class="app-details font-default">
+            <div class="app-date"><span class="app-details-head">Lab test Date : </span>{{ i.labtest_Date_Time }}</div>
+            <div class="app-status"><span class="app-details-head">Status : </span>
+                {% if i.status == False %}
+                Pending
+                {% else %}
+                Accepted
+                {% endif %}
+            </div>
+            <div class="app-book-date"><span class="app-details-head">Booked Date : </span>{{ i.booked_date }}</div>
+            {% if i.report %}
+            <div class="app-book-date"><span class="app-details-head">Lab Report: </span><a href="{{ i.report.url }}" download class="btn btn-primary btn-sm m-2">download report</a></div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

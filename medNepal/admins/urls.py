@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.admin_dashboard),
     path('show_doctor', views.get_doctor),
     path('show_patient', views.get_patient),
+    path('show_admin', views.get_admin),
     
     path('post_department', views.post_department, name='post_department'),
     path('get_department', views.get_department, name='get_department'),
@@ -20,6 +21,9 @@ urlpatterns = [
     path('get_medicine', views.get_medicine, name='get_medicine'),
     path('delete_medicine/<int:medicine_id>', views.delete_medicine, name='delete_medicine'),
     path('update_medicine/<int:medicine_id>', views.update_medicine),
-
     
+    path('show_book_labtest', views.show_book_labtest, name='show_book_labtest'),
+    path('update_labtest/<int:labtest_id>', views.update_labtest, name='update_labtest'),
+    path('accept_labtest/<int:labtest_id>', views.accept_labtest, name='accept_labtest'),
+    path('upload_labreport/<int:labtest_id>', views.upload_labreport, name='upload_labreport'),   
 ]

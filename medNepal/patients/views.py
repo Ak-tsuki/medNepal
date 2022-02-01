@@ -5,22 +5,13 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from accounts.models import Doctor, Patient, Department, User
 from admins.models import Medicine
-from .models import Appointment, Cart, MessageModel, ThreadModel
-from .forms import MessageForm, Profile_Form,Appointment_Form
+from .models import Appointment, Cart, LabTest, MessageModel, ThreadModel
+from .forms import LabTest_Form, MessageForm, Profile_Form,Appointment_Form
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 
-# Create your views here.
-# def patient_homepage(request):
-#     user = request.user
-#     patient = Patient.objects.get(user_id=user.id)
-#     context = {
-#         'patient':patient,
-#         'user':user
-#     }   
-#     return render(request, 'patients/homepage.html',context)
 
 #Add To Cart
 def add_to_cart(request, medicine_id):
@@ -92,6 +83,36 @@ def remove_book_appointment(request, appointment_id):
     return redirect('/patients/show_book_appointment')
 
 
+def book_labtest(request):
+    user = request.user
+    patient = Patient.objects.get(user_id=user.id) 
+
+    if request.method == 'POST':
+        form = LabTest_Form(request.POST)  
+        if form.is_valid():
+            labtest = LabTest.objects.create(patient = patient,labtest_Date_Time = request.POST.get('labtest_Date_Time'))
+            
+            if labtest:
+                messages.add_message(request, messages.SUCCESS, 'Labtest booked Succesfull')
+                return redirect('/patients/show_book_labtest')
+            
+    context = {
+        'form_labtest': LabTest_Form,
+    }
+    return render(request, 'patients/book_labtest.html',context)
+
+def show_book_labtest(request):
+    user = request.user
+    patient = Patient.objects.get(user_id=user.id) 
+    labtest = LabTest.objects.filter(patient=patient)
+    context = {
+        'labtests': labtest,
+    }
+    return render(request, 'patients/show_book_labtest.html', context)
+
+
+
+
 def get_profile(request):
     user = request.user
     patient = Patient.objects.get(user_id=user.id)
@@ -151,40 +172,6 @@ class ListThreads(View):
         
         return render(request,'patients/inbo.html', context)
     
-# class CreateThread(View):
-#     def get(self, request, *args, **kwargs):
-#         form = ThreadForm()
-        
-#         context = {
-#             'form': form
-
-#         }
-#         return render(request, 'patients/createThread.html', context)
-        
-#     def post(self, request, *args, **kwargs):
-#         form = ThreadForm(request.POST)
-        
-#         username = request.POST.get('username')
-        
-#         try:
-#             receiver = User.objects.get(username=username)
-#             if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
-#                 thread = ThreadModel.objects.filter(user=request.user, receiver=receiver)[0]
-#                 return redirect('thread', pk=thread.pk)
-#             elif ThreadModel.objects.filter(user=receiver, receiver=request.user).exists():
-#                 thread = ThreadModel.objects.filter(user=receiver, receiver=request.user)[0]
-#                 return redirect('thread', pk=thread.pk)
-            
-#             if form.is_valid():
-#                 thread = ThreadModel(
-#                     user=request.user,
-#                     receiver=receiver
-#                 )
-#                 thread.save()
-                
-#                 return redirect('thread', pk=thread.pk)
-#         except:
-#             return redirect('create-thread')
         
 
 def createThread(request, d_id):
