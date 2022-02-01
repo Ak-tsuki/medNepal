@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+<title>My Orders</title>
+{% endblock title %}
+{% block main_content %}
+<div class="order-container">
+    <h2 class="font-primary order-heading mb-4 text-center"><i class="fas fa-shipping-fast order-icon"></i> My Orders</h2>
+    {% for item in items %}
+    <div class="order-item-showcase">
+        <div class="order-item-card">
+            <div class="order-item-image">
+                <img src="/{{item.medicine.medicine_image}}" alt="" class="order-item-img" />
+            </div>
+            <div class="order-item-details font-default">
+                <div class="order-item-name font-secondary">{{item.medicine.medicine_name}}</div>
+                <div class=" order-item-price"><span class="item-details-head">Medicine Price: </span>Rs. <span>{{item.medicine.medicine_price}}</span></div>
+                <div class=""><span class="item-details-head">Quantity: </span>{{item.quantity}}</div>
+                <div class="order-item-price"><span class="item-details-head">Total Price: </span>Rs.<span>{{item.total_price}}</span></div>
+                <div class=" "><span class="item-details-head">Ordered Date: </span>{{item.created_date}}</div>
+                <div class=" "><span class="item-details-head">Contact: </span>{{item.contact_no}}</div>
+                <div class=" "><span class="item-details-head">Delivery Location: </span>{{item.contact_address}}</div>
+                <div class=""><span class="item-details-head">Status: </span> {{item.status}}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

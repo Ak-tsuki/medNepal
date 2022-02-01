@@ -5,12 +5,18 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from accounts.models import Doctor, Patient, Department, User
 from admins.models import Medicine
+<<<<<<< HEAD
 from .models import Appointment, Cart, LabTest, MessageModel, ThreadModel
 from .forms import LabTest_Form, MessageForm, Profile_Form,Appointment_Form
+=======
+from .models import Appointment, Cart, MessageModel, ThreadModel, Order
+from .forms import MessageForm, Profile_Form,Appointment_Form, OrderForm
+>>>>>>> 100abfd201b7c6045bf5a3dba9f5a36551fd9a99
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
+import requests as req
 
 
 #Add To Cart
@@ -223,3 +229,108 @@ class CreateMessage(View):
         
         message.save()
         return redirect('thread', pk=pk)
+
+def order_form(request, medicine_id, cart_id):
+    user = request.user
+    medicine = Medicine.objects.get(id=medicine_id)
+    cart_item = Cart.objects.get(id=cart_id)
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            quantity = request.POST.get('quantity')
+            price = medicine.medicine_price
+            total_price = int(quantity) * int(price)
+            contact_no = request.POST.get('contact_no')
+            contact_address = request.POST.get('contact_address')
+            payment_method = request.POST.get('payment_method')
+            order = Order.objects.create(medicine=medicine,
+                                         user=user,
+                                         quantity=quantity,
+                                         total_price=total_price,
+                                         contact_no=contact_no,
+                                         contact_address=contact_address,
+                                         status="Pending",
+                                         payment_method=payment_method,
+                                         payment_status=False
+                                         )
+            if order:
+                # messages.add_message(request, messages.SUCCESS, 'Item Ordered. Continue Payment for Verification')
+                # cart_item.delete()
+                context = {
+                    'order': order,
+                    'cart': cart_item,
+                }
+                return render(request, 'patients/esewa_payment.html', context)
+        else:
+            messages.add_message(request, messages.ERROR, 'Something went wrong')
+            return render(request, 'patients/order_form.html', {'order_form': form})
+    context = {
+        'order_form': OrderForm
+    }
+    return render(request, 'patients/order_form.html', context)
+
+def esewa_verify(request):
+    import xml.etree.ElementTree as ET
+    o_id = request.GET.get('oid')
+    amount = request.GET.get('amt')
+    refId = request.GET.get('refId')
+    url = "https://uat.esewa.com.np/epay/transrec"
+    d = {
+        'amt': amount,
+        'scd': 'EPAYTEST',
+        'rid': refId,
+        'pid': o_id,
+    }
+    resp = req.post(url, d)
+    root = ET.fromstring(resp.content)
+    status = root[0].text.strip()
+    if status == 'Success':
+        order_id = o_id.split("_")[0]
+        order = Order.objects.get(id=order_id)
+        order.payment_status = True
+        order.save()
+        cart_id = o_id.split("_")[1]
+        cart = Cart.objects.get(id=cart_id)
+        cart.delete()
+        messages.add_message(request, messages.SUCCESS, 'Payment Successful')
+        return redirect('/patients/mycart')
+    else:
+        messages.add_message(request, messages.ERROR, 'Unable to make payment')
+        return redirect('/patients/mycart')
+
+def my_order(request):
+    # cart = Cart.objects.all()
+    # cart_count = cart.count()
+    # wishlist = Wishlist.objects.all()
+    # wishlist_count = wishlist.count()
+    user = request.user
+    items = Order.objects.filter(user=user, payment_status=True).order_by('-id')
+    context = {
+        'items': items,
+        'activate_myorders': 'active',
+        # 'count': cart_count,
+        # 'count_list': wishlist_count,
+
+    }
+    return render(request, 'patients/my_order.html', context)
+
+def get_order(request):
+    order = Order.objects.all().order_by('-id')
+    context = {
+        'order': order,
+        'activate_order': 'active',
+    }
+    return render(request, 'patients/get_order.html', context)
+
+def deleteOrder(request, order_id):
+    order = Order.objects.get(id=order_id)
+    order.delete()
+    messages.add_message(request, messages.SUCCESS, 'Order has been deleted Successfully')
+    return redirect('/patients/get_order')
+
+def updateOrder(request, order_id):
+    order = Order.objects.get(id=order_id)
+    order.status = 'Delivered'
+    order.save()
+    messages.add_message(request, messages.SUCCESS, 'Order Has Been Delivered Successfully')
+    return redirect('/patients/get_order')

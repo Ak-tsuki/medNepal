@@ -3,7 +3,11 @@ from pyexpat import model
 from django import forms
 from django.forms import ModelForm, widgets
 from accounts.models import Patient
+<<<<<<< HEAD
 from .models import Appointment, LabTest
+=======
+from .models import Appointment, Order
+>>>>>>> 100abfd201b7c6045bf5a3dba9f5a36551fd9a99
 
 class Profile_Form(ModelForm):
     class Meta:
@@ -30,3 +34,8 @@ class LabTest_Form(ModelForm):
      
 class MessageForm(forms.Form):
     message = forms.CharField(label='', max_length=1000)
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['quantity', 'contact_no', 'contact_address', 'payment_method']
