@@ -33,11 +33,6 @@ class LabTest(models.Model):
     report = models.FileField(upload_to='static/patientLabreport', null = True)
     
     
-# class Labreport(models.Model):
-#     labtest = models.ForeignKey(LabTest,on_delete=models.CASCADE)
-    
-#     uploadeddate = models.DateTimeField(auto_now_add=True, null=True)
-
 
 class ThreadModel(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='+')

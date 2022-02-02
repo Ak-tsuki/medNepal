@@ -5,18 +5,18 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from accounts.models import Doctor, Patient, Department, User
 from admins.models import Medicine
-<<<<<<< HEAD
+
 from .models import Appointment, Cart, LabTest, MessageModel, ThreadModel
 from .forms import LabTest_Form, MessageForm, Profile_Form,Appointment_Form
-=======
+
 from .models import Appointment, Cart, MessageModel, ThreadModel, Order
 from .forms import MessageForm, Profile_Form,Appointment_Form, OrderForm
->>>>>>> 100abfd201b7c6045bf5a3dba9f5a36551fd9a99
+
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-import requests as req
+
 
 
 #Add To Cart
