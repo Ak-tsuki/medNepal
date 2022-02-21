@@ -5,17 +5,32 @@
 <title>Doctor Page</title>
 {% endblock title %} 
 {% block main_content %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-                       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-
 <div class="doctorpage-container">
-  <div class="flex-container">
-    <button type="button" class="btn btn-primary btn-lg pt-3 pb-3 pl-5 pr-5">Search Doctor</button>
-    <button type="button" class="btn btn-primary btn-lg pt-3 pb-3 pl-5 pr-5">Pharmacy</button>
-    <button type="button" class="btn btn-primary btn-lg pt-3 pb-3 pl-5 pr-5">Consultation</button>
-    <button type="button" class="btn btn-primary btn-lg pt-3 pb-3 pl-5 pr-5">Appointment</button>
+  <div class="feature-options">
+    <a href="/features/searchdoctor" class="search-doctor-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-search.png' %}" alt="" class="feature-icon">
+        Search doctor
+      </div>
+    </a>
+    <a href="/features/pharmacy" class="pharmacy-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-pharmacy.png' %}" alt="" class="feature-icon">
+        Pharmacy
+      </div>
+    </a>
+    <a href="#" class="consultation-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-consultation.png' %}" alt="" class="feature-icon">
+        Consultation
+      </div>
+    </a>
+    <a href="/emergency" class="appointment-btn">
+      <div class="feature-btn ">
+        <img src="{% static 'images/icon-emergency.png' %}" alt="" class="feature-icon">
+        Emergency
+      </div>
+    </a>
   </div>
 
   <div class="container container-border-primary mt-5 mb-5">
@@ -29,7 +44,7 @@
               <h5 class="card-title">Rs. {{department.appointmentFee}}</h5>
                 
               <a href="/patients/inbox/create-thread-view/{{doctor.user_id}}" class="btn btn-primary">Free Consult</a> 
-              <a href="/patients/book_appointment/{{doctor.user_id}}" class="btn btn-outline-primary" >Get Appoitment</a>   
+              <a href="/patients/book_appointment/{{doctor.user_id}}" class="btn btn-outline-primary" >Get Appointment</a>   
             </div>
         </div>
         <div class="container pt-3 col-md-5">

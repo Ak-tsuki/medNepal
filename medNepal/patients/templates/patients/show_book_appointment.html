@@ -6,6 +6,7 @@
 {% block main_content %}
 <h2 class="font-primary app-heading mb-4 text-center"><i class="fas fa-calendar-check app-icon"></i> My Appointments</h2>
 <div class="app-showcase">
+    {% include 'messages.html' %}
     {% for i in appointments %}
     <div class="app-box mb-4">
         <div class="app-image">

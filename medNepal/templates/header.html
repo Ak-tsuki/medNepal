@@ -14,19 +14,26 @@
     <ul class="navi-list">
       <li class="navi-item"><a href="/" class="navi-link">Home</a></li>
       <li class="navi-item"><a href="/features/searchdoctor" class="navi-link">Find a doctor</a></li>
+      <li class="navi-item"><a href="/features/article" class="navi-link">Articles</a></li>
       {% if user.is_authenticated %}
       <li class="navi-item"><a href="/patients/book_labtest" class="navi-link">Lab test Request</a></li>
-      <li class="navi-item">
-          <a href="{% url 'inbox' %}">inbox</a>
-      </li>
-      <li class="navi-item">
-        <a href="/patients/get_profile"><img src="/{{request.user.patient.profile_pic}}" class="rounded-circle"
-            style="object-fit: cover;" alt="file_image" width="35px" , height="35px"> {{user}}</a>
-        <a href="{% url 'logout' %}" class="white-btn login-btn">Logout</a>
+      <li class="navi-item user-profile-link">
+        <a href="#"><img src="/{{request.user.patient.profile_pic}}" class="rounded-circle" style="object-fit: cover;"
+            alt="file_image" width="35px" , height="35px"> {{user}} <i
+            class="user-options-icon fa fa-caret-down"></i></a>
+        <div class="user-options">
+          <ul class="user-options-list">
+            <li><a class="" href="/patients/get_profile"><i class="fas fa-user me-1 blue-icons"></i>My Profile</a></li>
+            <li><a class="" href="/patients/inbox"><i class="far fa-envelope me-1 blue-icons"></i>Inbox</a></li>
+            <li><a class="" href="/patients/mycart"><i class="fad fa-cart-plus me-1 blue-icons"></i>My Cart</a></li>
+            <li><a class="" href="/patients/my_order"><i class="fas fa-bags-shopping me-1 blue-icons"></i>My Orders</a></li>
+            <li><a class="" href="/patients/show_book_appointment"><i class="fas fa-calendar-check me-1 blue-icons"></i>Appointments</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fas fa-solid fa-arrow-right-from-bracket me-1 blue-icons"></i>Logout</a></li>
+          </ul>
+        </div>
       </li>
       {% else %}
       <li class="navi-item"><a href="/#services" class="navi-link">Our services</a></li>
-      <li class="navi-item"><a href="/#articles" class="navi-link">Articles</a></li>
       <li class="navi-item"><a href="/#about-us" class="navi-link">About Us</a></li>
       <li class="navi-item">
         <a href="/login" class="white-btn login-btn">Login</a>
