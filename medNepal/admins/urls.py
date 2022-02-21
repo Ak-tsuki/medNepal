@@ -25,5 +25,10 @@ urlpatterns = [
     path('show_book_labtest', views.show_book_labtest, name='show_book_labtest'),
     path('update_labtest/<int:labtest_id>', views.update_labtest, name='update_labtest'),
     path('accept_labtest/<int:labtest_id>', views.accept_labtest, name='accept_labtest'),
-    path('upload_labreport/<int:labtest_id>', views.upload_labreport, name='upload_labreport'),   
+    path('upload_labreport/<int:labtest_id>', views.upload_labreport, name='upload_labreport'),  
+    
+    path('post_article', views.post_article, name='post_article'),
+    path('get_article', views.get_article, name='get_article'),
+    path('delete_article/<int:article_id>', views.delete_article, name='delete_medicine'),
+    path('update_article/<int:article_id>', views.update_article), 
 ]

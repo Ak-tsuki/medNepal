@@ -1,0 +1,44 @@
+{% extends 'layout-admin.html' %}
+{% load bootstrap %}
+{% block title %}
+<title>Get Article</title>
+{% endblock title %}
+{% block main_content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            {% include 'messages.html' %}
+            <div class="card py-2 px-2 table-responsive shadow-lg rounded-3">
+                <h1 class="text-center bg-light">Article</h1>
+                <div class="card py-2 px-2 border border-dark border-5">
+                    <a class="btn btn-dark btn-sm ms-auto mb-2" href="/admins/post_article">Add New Article
+                        </a>
+                    <table class="table table-striped table-border">
+                        <tr>
+                            <th>Image</th>
+                            <th>Article Title</th>
+                            <th>Discription</th>
+                            <th>Sub Discription</th>
+                        </tr>
+                        {% for file in files %}
+                        <tr class="cap-height">
+                            <td><img src="/{{file.article_image}}" alt="file_image" width="100">
+                            </td>
+                            <td>{{ file.article_title }}</td>
+                            <td>{{ file.article_brief }}</td>
+                            <td>{{ file.article_sub_brief }}</td>
+                            <td><a href="/admins/update_article/{{file.id}}" class="btn btn-primary btn-sm m-2">Update Article</a> &nbsp;
+                                <a href="/admins/delete_article/{{file.id}}" class="btn btn-danger btn-sm m-2"
+                                    onclick="return confirm('Are you sure want to delete this Article?')">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}

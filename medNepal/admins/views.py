@@ -6,8 +6,8 @@ from patients.models import LabTest
 from .filters import *
 from accounts.models import Doctor, Patient, Department
 from accounts.forms import DepartmentForm
-from .forms import LabReportForm, MedicineCategoryForm, MedicineForm
-from .models import MedicineCategory, Medicine
+from .forms import ArticleForm, LabReportForm, MedicineCategoryForm, MedicineForm
+from .models import Article, MedicineCategory, Medicine
 from django.contrib import messages
 import os
 # Create your views here.
@@ -279,3 +279,58 @@ def upload_labreport(request, labtest_id):
     return render(request, 'admins/upload_labreport.html',context)
 
     
+def post_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Article Added Successfully")
+            return redirect('/admins/get_article')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to Add Article")
+            return render(request, 'admins/post_article.html', {'form_article': form})
+
+    context = {
+        'form_article': ArticleForm,
+        # 'activate_post_article': 'active'
+    }
+    return render(request, 'admins/post_article.html', context)
+
+def get_article(request):
+    article = Article.objects.all().order_by('-id')
+
+    context = {
+        'files': article,
+    }
+    return render(request, 'admins/get_article.html', context)
+
+def delete_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    article.delete()
+    os.remove(article.article_image.path)
+    messages.add_message(request, messages.SUCCESS, "Succeccfully deleted")
+    return redirect('/admins/get_article')
+
+def update_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+
+    if request.method == 'POST':
+        if request.FILES.get('article_image'):
+            os.remove(article.article_image.path)
+            
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Updated successfully")
+            return redirect('/admins/get_article')
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to update successfully")
+            return render(request, 'admins/update_article.html', {'form_article': form})
+
+    context = {
+        'form_article': ArticleForm(instance=article),
+    }
+    return render(request, 'admins/update_article.html', context)
+

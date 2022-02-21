@@ -20,3 +20,12 @@ class Medicine(models.Model):
 
     def __str__(self):
         return self.medicine_name
+    
+# Model For Aricle
+class Article(models.Model):
+     article_image = models.FileField(upload_to='static/images', null = True)
+     article_title = models.CharField(max_length=200)
+     article_brief = models.TextField()
+     article_sub_brief = models.TextField()
+     def __str__(self):
+         return self.article_title

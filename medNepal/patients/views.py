@@ -60,7 +60,8 @@ def book_appointment(request, doctor_id):
     if request.method == 'POST':
         form = Appointment_Form(request.POST)  
         if form.is_valid():
-            appointment = Appointment.objects.create(patient = patient,doctor = doctor, appointment_Date_Time = request.POST.get('appointment_Date_Time'))
+            appointment = Appointment.objects.create(patient = patient,doctor = doctor, 
+                                                     appointment_Date_Time = request.POST.get('appointment_Date_Time'))
             
             if appointment:
                 messages.add_message(request, messages.SUCCESS, 'Appointment Succesfull')
@@ -195,8 +196,6 @@ def createThread(request, d_id):
             thread.save()
                 
             return redirect('thread', pk=thread.pk)
-
-
 
 
 class ThreadView(View):
