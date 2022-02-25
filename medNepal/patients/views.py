@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-
+import requests as req
 
 
 #Add To Cart
